@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "fibers": "^5.0.3",
+    "sass": "^1.57.1"
+  },
+    "scripts": {
+    "compile:sass": "sass assets/src/scss/mdb.free.scss assets/css/style.css --watch"
+  }
+}
