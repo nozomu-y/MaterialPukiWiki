@@ -19,7 +19,7 @@ $_IMAGE['skin']['favicon']  = ''; // Sample: 'image/favicon.ico';
 //   1 = Show reload URL
 //   0 = Show topicpath
 if (!defined('SKIN_DEFAULT_DISABLE_TOPICPATH'))
-    define('SKIN_DEFAULT_DISABLE_TOPICPATH', 1); // 1, 0
+    define('SKIN_DEFAULT_DISABLE_TOPICPATH', 0); // 1, 0
 
 // Show / Hide navigation bar UI at your choice
 // NOTE: This is not stop their functionalities!
@@ -29,7 +29,7 @@ if (!defined('PKWK_SKIN_SHOW_NAVBAR'))
 // Show / Hide toolbar UI at your choice
 // NOTE: This is not stop their functionalities!
 if (!defined('PKWK_SKIN_SHOW_TOOLBAR'))
-    define('PKWK_SKIN_SHOW_TOOLBAR', 1); // 1, 0
+    define('PKWK_SKIN_SHOW_TOOLBAR', 0); // 1, 0
 
 // ------------------------------------------------------------
 // Code start
@@ -75,7 +75,18 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
     <title><?php echo $title ?> - <?php echo $page_title ?></title>
 
     <link rel="SHORTCUT ICON" href="<?php echo $image['favicon'] ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css" /> -->
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $link['rss'] ?>" /><?php // RSS auto-discovery 
                                                                                                         ?>
     <script type="text/javascript" src="skin/main.js" defer></script>
@@ -86,118 +97,174 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
 
 <body>
     <?php echo $html_scripting_data ?>
-    <div id="header">
-        <a href="<?php echo $link['top'] ?>"><img id="logo" src="<?php echo IMAGE_DIR . $image['logo'] ?>" width="80" height="80" alt="[PukiWiki]" title="[PukiWiki]" /></a>
-
-        <h1 class="title"><?php echo $page ?></h1>
-
-        <?php if ($is_page) { ?>
-            <?php if (SKIN_DEFAULT_DISABLE_TOPICPATH) { ?>
-                <a href="<?php echo $link['canonical_url'] ?>"><span class="small"><?php echo $link['canonical_url'] ?></span></a>
-            <?php } else { ?>
-                <span class="small">
-                    <?php require_once(PLUGIN_DIR . 'topicpath.inc.php');
-                    echo plugin_topicpath_inline(); ?>
-                </span>
-            <?php } ?>
-        <?php } ?>
-
-    </div>
-
-    <div id="navigator">
-        <?php if (PKWK_SKIN_SHOW_NAVBAR) { ?>
-            <?php
-            function _navigator($key, $value = '', $javascript = '')
-            {
-                $lang = &$GLOBALS['_LANG']['skin'];
-                $link = &$GLOBALS['_LINK'];
-                if (!isset($lang[$key])) {
-                    echo 'LANG NOT FOUND';
-                    return FALSE;
-                }
-                if (!isset($link[$key])) {
-                    echo 'LINK NOT FOUND';
-                    return FALSE;
-                }
-
-                echo '<a href="' . $link[$key] . '" ' . $javascript . '>' .
-                    (($value === '') ? $lang[$key] : $value) .
-                    '</a>';
-
-                return TRUE;
-            }
-            ?>
-            [ <?php _navigator('top') ?> ] &nbsp;
-
-            <?php if ($is_page) { ?>
-                [
-                <?php if ($rw) { ?>
-                    <?php _navigator('edit') ?> |
-                    <?php if ($is_read && $function_freeze) { ?>
-                        <?php (!$is_freeze) ? _navigator('freeze') : _navigator('unfreeze') ?> |
-                    <?php } ?>
-                <?php } ?>
-                <?php _navigator('diff') ?>
-                <?php if ($do_backup) { ?>
-                    | <?php _navigator('backup') ?>
-                <?php } ?>
-                <?php if ($rw && (bool)ini_get('file_uploads')) { ?>
-                    | <?php _navigator('upload') ?>
-                <?php } ?>
-                | <?php _navigator('reload') ?>
-                ] &nbsp;
-            <?php } ?>
-
-            [
-            <?php if ($rw) { ?>
-                <?php _navigator('new') ?> |
-            <?php } ?>
-            <?php _navigator('list') ?>
-            <?php if (arg_check('list')) { ?>
-                | <?php _navigator('filelist') ?>
-            <?php } ?>
-            | <?php _navigator('search') ?>
-            | <?php _navigator('recent') ?>
-            | <?php _navigator('help')   ?>
-            <?php if ($enable_login) { ?>
-                | <?php _navigator('login') ?>
-            <?php } ?>
-            <?php if ($enable_logout) { ?>
-                | <?php _navigator('logout') ?>
-            <?php } ?>
-            ]
-        <?php } // PKWK_SKIN_SHOW_NAVBAR 
-        ?>
-    </div>
-
-    <?php echo $hr ?>
-
-    <div id="contents">
-        <div id="body"><?php echo $body ?></div>
-        <?php if ($menu) { ?>
-            <div id="menubar"><?php echo $menu ?></div>
-        <?php } ?>
-        <?php if ($rightbar) { ?>
-            <div id="rightbar"><?php echo $rightbar ?></div>
-        <?php } ?>
-    </div>
-
-    <?php if ($notes != '') { ?>
-        <div id="note"><?php echo $notes ?></div>
-    <?php } ?>
-
-    <?php if ($attaches != '') { ?>
-        <div id="attach">
-            <?php echo $hr ?>
-            <?php echo $attaches ?>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="<?php echo $link['top']; ?>">
+                <?php echo $page_title; ?>
+            </a>
         </div>
-    <?php } ?>
+    </nav>
 
-    <?php echo $hr ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                <?php if (!SKIN_DEFAULT_DISABLE_TOPICPATH) { ?>
+                <?php 
+                function get_parent_links() {
+                    require_once(PLUGIN_DIR . 'topicpath.inc.php');
+                    global $vars, $defaultpage;
+                    $page = isset($vars['page']) ? $vars['page'] : '';
+                    if ($page === '' || $page === $defaultpage) return [];
+                    $links = plugin_topicpath_parent_links($vars['page']);
+                    return $links;
+                }
+                $links = get_parent_links();
+                ?>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <?php
+                        foreach ($links as $link) {
+                        ?>
+                        <li class="breadcrumb-item"><a href="<?php echo $link['uri'] ?>"><?php echo $link['leaf'] ?></a></li>
+                        <?php
+                        }
+                        ?>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo end(explode('/', $title)) ?></li>
+                    </ol>
+                </nav>
+                <?php } ?>
+                <?php if (PKWK_SKIN_SHOW_NAVBAR) { ?>
+                <div class="dropdown">
+                    <button
+                        class="btn btn-primary btn-sm dropdown-toggle hidden-arrow"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-solid fa-bars fa-lg"></i>
+                    </button>
+                    <?php
+                        function _navigator($key, $icon='', $value = '', $javascript = '')
+                        {
+                            $lang = &$GLOBALS['_LANG']['skin'];
+                            $link = &$GLOBALS['_LINK'];
+                            if (!isset($lang[$key])) {
+                                echo 'LANG NOT FOUND';
+                                return FALSE;
+                            }
+                            if (!isset($link[$key])) {
+                                echo 'LINK NOT FOUND';
+                                return FALSE;
+                            }
+                            if ($icon !== '')  {
+                                $icon = '<i class="'. $icon .' me-2"></i>';
+                            }
+
+                            echo '<li><a class="dropdown-item" href="' . $link[$key] . '" ' . $javascript . '>' . $icon . (($value === '') ? $lang[$key] : $value) . '</a></li>';
+
+                            return TRUE;
+                        }
+                    ?>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <?php 
+                    if ($is_page) {
+                        if ($rw) {
+                            _navigator('edit', 'fa-solid fa-pen-to-square');
+                            if ($is_read && $function_freeze) {
+                                (!$is_freeze) ? _navigator('freeze', 'fa-solid fa-lock') : _navigator('unfreeze', 'fa-solid fa-unlock');
+                            }
+                        }
+                        _navigator('diff', 'fa-solid fa-code-compare');
+                        if ($do_backup) {
+                            _navigator('backup', 'fa-solid fa-clock-rotate-left');
+                        }
+                        if ($rw && (bool)ini_get('file_uploads')) {
+                            _navigator('upload', 'fa-solid fa-cloud-arrow-up');
+                        }
+                        _navigator('reload', 'fa-solid fa-rotate-right');
+                    }
+                    ?>
+                    <li><hr class="dropdown-divider" /></li>
+                    <?php 
+                    if ($rw) {
+                        _navigator('new', 'fa-solid fa-plus');
+                    }
+                    _navigator('list', 'fa-solid fa-list');
+                    if (arg_check('list')) {
+                        _navigator('filelist', 'fa-solid fa-list');
+                    }
+                    _navigator('search', 'fa-solid fa-magnifying-glass');
+                    _navigator('recent', 'fa-solid fa-clock');
+                    _navigator('help', 'fa-solid fa-circle-info');
+                    if ($enable_login) {
+                        _navigator('login', 'fa-solid fa-right-to-bracket');
+                    }
+                    if ($enable_logout) {
+                        _navigator('logout', 'fa-solid fa-right-from-bracket');
+                    }
+                    ?>
+                    </ul>
+                </div>
+                <?php } ?>
+                </div>
+                <?php if (PKWK_SKIN_SHOW_NAVBAR || !SKIN_DEFAULT_DISABLE_TOPICPATH) { ?>
+                <hr>
+                <?php } ?>
+                    <?php echo $body ?>
+                    <?php if ($notes != '') { ?>
+                        <div id="note"><?php echo $notes ?></div>
+                    <?php } ?>
+                    <?php if ($attaches != '') { ?>
+                        <div id="attach">
+                            <?php echo $hr ?>
+                            <?php echo $attaches ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php if ($menu) { ?>
+                <hr class="d-block d-md-none mt-3 mb-0">
+                <div class="col-md-3 order-md-first mt-3">
+                    <?php echo $menu ?>
+                </div>
+            <?php } ?>
+            <?php if ($rightbar) { ?>
+                <hr class="d-block d-md-none mt-3 mb-0">
+                <div class="col-md-3 mt-3">
+                    <?php echo $rightbar ?>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
+    <footer class="bg-secondary bg-opacity-10 py-3 mt-3">
+        <div class="text-center">
+            <?php if ($is_page) { ?>
+                <?php if (SKIN_DEFAULT_DISABLE_TOPICPATH) { ?>
+                    <a href="<?php echo $link['canonical_url'] ?>"><span class="small"><?php echo $link['canonical_url'] ?></span></a>
+                    <br>
+                <?php } ?>
+            <?php } ?>
+            <?php if ($lastmodified != '') { ?>
+            <span>Last-modified: <?php echo $lastmodified ?></span>
+            <br>
+            <?php } ?>
+            <?php if ($related != '') { ?>
+            <span>Link: <?php echo $related ?></span>
+            <br>
+            <?php } ?>
+            <span>Site admin: <a href="<?php echo $modifierlink ?>"><?php echo $modifier ?></a></span>
+            <br>
+            <!-- Copyright -->
+            <span><?php echo S_COPYRIGHT ?>.</span>
+            <span>Powered by PHP <?php echo PHP_VERSION ?>.</span>
+            <span>HTML convert time: <?php echo elapsedtime() ?> sec.</span>
+        </div>
 
     <?php if (PKWK_SKIN_SHOW_TOOLBAR) { ?>
         <!-- Toolbar -->
-        <div id="toolbar">
+        <div id="toolbar" class="d-flex justify-content-end mt-1">
             <?php
 
             // Set toolbar-specific images
@@ -285,22 +352,9 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
         </div>
     <?php } // PKWK_SKIN_SHOW_TOOLBAR 
     ?>
+    </footer>
 
-    <?php if ($lastmodified != '') { ?>
-        <div id="lastmodified">Last-modified: <?php echo $lastmodified ?></div>
-    <?php } ?>
-
-    <?php if ($related != '') { ?>
-        <div id="related">Link: <?php echo $related ?></div>
-    <?php } ?>
-
-    <div id="footer">
-        Site admin: <a href="<?php echo $modifierlink ?>"><?php echo $modifier ?></a>
-        <p>
-            <?php echo S_COPYRIGHT ?>.
-            Powered by PHP <?php echo PHP_VERSION ?>. HTML convert time: <?php echo elapsedtime() ?> sec.
-        </p>
-    </div>
+    <script type="text/javascript" src="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/js/mdb.min.js"></script>
 </body>
 
 </html>
