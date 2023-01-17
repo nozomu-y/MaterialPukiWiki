@@ -75,7 +75,8 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
     <title><?php echo $title ?> - <?php echo $page_title ?></title>
 
     <link rel="SHORTCUT ICON" href="<?php echo $image['favicon'] ?>" />
-    <!-- <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css" /> -->
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/style.css" />
     <!-- Font Awesome -->
     <link
@@ -124,9 +125,9 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <?php
-                        foreach ($links as $link) {
+                        foreach ($links as $l) {
                         ?>
-                        <li class="breadcrumb-item"><a href="<?php echo $link['uri'] ?>"><?php echo $link['leaf'] ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo $l['uri'] ?>"><?php echo $l['leaf'] ?></a></li>
                         <?php
                         }
                         ?>
@@ -134,7 +135,29 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
                     </ol>
                 </nav>
                 <?php } ?>
-                <?php if (PKWK_SKIN_SHOW_NAVBAR) { ?>
+                <?php 
+                if (PKWK_SKIN_SHOW_NAVBAR) {
+                    function _navigator($key, $icon='', $value = '', $javascript = '')
+                    {
+	                    $lang = & $GLOBALS['_LANG']['skin'];
+	                    $link = & $GLOBALS['_LINK'];
+                        if (!isset($lang[$key])) {
+                            // echo 'LANG NOT FOUND';
+                            return FALSE;
+                        }
+                        if (!isset($link[$key])) {
+                            // echo 'LINK NOT FOUND';
+                            return FALSE;
+                        }
+                        if ($icon !== '')  {
+                            $icon = '<i class="'. $icon .' me-2"></i>';
+                        }
+
+                        echo '<li><a class="dropdown-item" href="' . $link[$key] . '" ' . $javascript . '>' . $icon . (($value === '') ? $lang[$key] : $value) . '</a></li>';
+
+                        return TRUE;
+                    }
+                ?>
                 <div class="dropdown">
                     <button
                         class="btn btn-primary btn-sm dropdown-toggle hidden-arrow"
@@ -145,28 +168,6 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
                     >
                         <i class="fa-solid fa-bars fa-lg"></i>
                     </button>
-                    <?php
-                        function _navigator($key, $icon='', $value = '', $javascript = '')
-                        {
-                            $lang = &$GLOBALS['_LANG']['skin'];
-                            $link = &$GLOBALS['_LINK'];
-                            if (!isset($lang[$key])) {
-                                echo 'LANG NOT FOUND';
-                                return FALSE;
-                            }
-                            if (!isset($link[$key])) {
-                                echo 'LINK NOT FOUND';
-                                return FALSE;
-                            }
-                            if ($icon !== '')  {
-                                $icon = '<i class="'. $icon .' me-2"></i>';
-                            }
-
-                            echo '<li><a class="dropdown-item" href="' . $link[$key] . '" ' . $javascript . '>' . $icon . (($value === '') ? $lang[$key] : $value) . '</a></li>';
-
-                            return TRUE;
-                        }
-                    ?>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <?php 
                     if ($is_page) {
@@ -184,9 +185,12 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
                             _navigator('upload', 'fa-solid fa-cloud-arrow-up');
                         }
                         _navigator('reload', 'fa-solid fa-rotate-right');
+                        _navigator('rename', 'fa-solid fa-pen');
                     }
                     ?>
+                    <?php if ($is_page) { ?>
                     <li><hr class="dropdown-divider" /></li>
+                    <?php } ?>
                     <?php 
                     if ($rw) {
                         _navigator('new', 'fa-solid fa-plus');

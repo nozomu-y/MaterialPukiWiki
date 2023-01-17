@@ -50,12 +50,36 @@ a {
   }
 }
 
+a {
+  &:visited {
+    @extend a;
+  }
+  &:hover {
+    background-color: unset;
+  }
+  &.navbar-brand {
+    color: rgba(0, 0, 0, 0.9);
+  }
+  &.dropdown-item {
+    color: $gray-800;
+  }
+}
+
+hr {
+  &.note_hr {
+    @extend hr;
+    width: 100%;
+    text-align: unset;
+  }
+}
+
 pre {
   @extend .alert, .alert-secondary;
-  strong {
-    &.word0 {
-      background-color: $yellow;
-    }
+}
+
+strong {
+  &.word0 {
+    background-color: $yellow;
   }
 }
 
@@ -68,13 +92,28 @@ a {
   }
 }
 
-input[type="search"] {
-  @extend .form-control;
-  background-color: $white;
-  width: unset;
-  display: inline-block;
+form {
+  @extend form;
+  div {
+    @extend .form-outline;
+    input[type="search"],
+    input[type="text"] {
+      @extend .form-outline, .form-control;
+      background-color: $white;
+      width: unset;
+      display: inline-block;
+      border: 1px solid $gray-300;
+    }
+    input[type="radio"] {
+      @extend .form-check-input;
+      margin-right: 0;
+    }
+    input[type="submit"] {
+      @extend .btn, .btn-primary;
+    }
+  }
 }
 
-input[type="submit"] {
-  @extend .btn, .btn-primary;
+input[type="checkbox"] {
+  @extend .form-check-input;
 }

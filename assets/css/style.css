@@ -94,7 +94,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-hr {
+hr, hr.note_hr {
   margin: 1rem 0;
   color: inherit;
   border: 0;
@@ -232,7 +232,7 @@ sup {
   top: -0.5em;
 }
 
-a {
+a, a:visited {
   color: var(--mdb-link-color);
   text-decoration: none;
 }
@@ -272,7 +272,7 @@ code {
   color: var(--mdb-code-color);
   word-wrap: break-word;
 }
-a > code {
+a > code, a:visited > code {
   color: inherit;
 }
 
@@ -1982,7 +1982,8 @@ progress {
   color: #757575;
 }
 
-.form-control, input[type=search] {
+.form-control, form div input[type=search],
+form div input[type=text] {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
@@ -1999,35 +2000,43 @@ progress {
   transition: all 0.2s linear;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control, input[type=search] {
+  .form-control, form div input[type=search],
+  form div input[type=text] {
     transition: none;
   }
 }
-.form-control[type=file], input[type=file][type=search] {
+.form-control[type=file], form div input[type=file][type=search],
+form div input[type=file][type=text] {
   overflow: hidden;
 }
-.form-control[type=file]:not(:disabled):not([readonly]), input[type=file][type=search]:not(:disabled):not([readonly]) {
+.form-control[type=file]:not(:disabled):not([readonly]), form div input[type=file][type=search]:not(:disabled):not([readonly]),
+form div input[type=file][type=text]:not(:disabled):not([readonly]) {
   cursor: pointer;
 }
-.form-control:focus, input[type=search]:focus {
+.form-control:focus, form div input[type=search]:focus,
+form div input[type=text]:focus {
   color: #4f4f4f;
   background-color: #f8fafc;
   border-color: #3b71ca;
   outline: 0;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 0 0.25rem rgba(59, 113, 202, 0.25);
 }
-.form-control::-webkit-date-and-time-value, input[type=search]::-webkit-date-and-time-value {
+.form-control::-webkit-date-and-time-value, form div input[type=search]::-webkit-date-and-time-value,
+form div input[type=text]::-webkit-date-and-time-value {
   height: 1.6em;
 }
-.form-control::placeholder, input[type=search]::placeholder {
+.form-control::placeholder, form div input[type=search]::placeholder,
+form div input[type=text]::placeholder {
   color: #757575;
   opacity: 1;
 }
-.form-control:disabled, input[type=search]:disabled {
+.form-control:disabled, form div input[type=search]:disabled,
+form div input[type=text]:disabled {
   background-color: #eeeeee;
   opacity: 1;
 }
-.form-control::file-selector-button, input[type=search]::file-selector-button {
+.form-control::file-selector-button, form div input[type=search]::file-selector-button,
+form div input[type=text]::file-selector-button {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   margin-inline-end: 0.75rem;
@@ -2042,11 +2051,13 @@ progress {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control::file-selector-button, input[type=search]::file-selector-button {
+  .form-control::file-selector-button, form div input[type=search]::file-selector-button,
+  form div input[type=text]::file-selector-button {
     transition: none;
   }
 }
-.form-control:hover:not(:disabled):not([readonly])::file-selector-button, input[type=search]:hover:not(:disabled):not([readonly])::file-selector-button {
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button, form div input[type=search]:hover:not(:disabled):not([readonly])::file-selector-button,
+form div input[type=text]:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: #e2e2e2;
 }
 
@@ -2189,7 +2200,7 @@ textarea.form-control-lg {
   padding-left: 1.5em;
   margin-bottom: 0.125rem;
 }
-.form-check .form-check-input {
+.form-check .form-check-input, .form-check input[type=checkbox], .form-check form div input[type=radio], form div .form-check input[type=radio] {
   float: left;
   margin-left: -1.5em;
 }
@@ -2199,13 +2210,13 @@ textarea.form-control-lg {
   padding-left: 0;
   text-align: right;
 }
-.form-check-reverse .form-check-input {
+.form-check-reverse .form-check-input, .form-check-reverse input[type=checkbox], .form-check-reverse form div input[type=radio], form div .form-check-reverse input[type=radio] {
   float: right;
   margin-right: -1.5em;
   margin-left: 0;
 }
 
-.form-check-input {
+.form-check-input, input[type=checkbox], form div input[type=radio] {
   width: 1em;
   height: 1em;
   margin-top: 0.3em;
@@ -2218,41 +2229,41 @@ textarea.form-control-lg {
   appearance: none;
   print-color-adjust: exact;
 }
-.form-check-input[type=checkbox] {
+.form-check-input[type=checkbox], input[type=checkbox], form div input[type=checkbox][type=radio] {
   border-radius: 0.25em;
 }
-.form-check-input[type=radio] {
+.form-check-input[type=radio], input[type=radio][type=checkbox], form div input[type=radio] {
   border-radius: 50%;
 }
-.form-check-input:active {
+.form-check-input:active, input[type=checkbox]:active, form div input[type=radio]:active {
   filter: brightness(90%);
 }
-.form-check-input:focus {
+.form-check-input:focus, input[type=checkbox]:focus, form div input[type=radio]:focus {
   border-color: #3b71ca;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(59, 113, 202, 0.25);
 }
-.form-check-input:checked {
+.form-check-input:checked, input[type=checkbox]:checked, form div input[type=radio]:checked {
   background-color: #3b71ca;
   border-color: #3b71ca;
 }
-.form-check-input:checked[type=checkbox] {
+.form-check-input:checked[type=checkbox], input:checked[type=checkbox] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
 }
-.form-check-input:checked[type=radio] {
+.form-check-input:checked[type=radio], input[type=checkbox]:checked[type=radio], form div input:checked[type=radio] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
-.form-check-input[type=checkbox]:indeterminate {
+.form-check-input[type=checkbox]:indeterminate, input[type=checkbox]:indeterminate {
   background-color: #3b71ca;
   border-color: #757575;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
-.form-check-input:disabled {
+.form-check-input:disabled, input[type=checkbox]:disabled, form div input[type=radio]:disabled {
   pointer-events: none;
   filter: none;
   opacity: 0.5;
 }
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+.form-check-input[disabled] ~ .form-check-label, input[disabled][type=checkbox] ~ .form-check-label, form div input[disabled][type=radio] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label, input[type=checkbox]:disabled ~ .form-check-label, form div input[type=radio]:disabled ~ .form-check-label {
   cursor: default;
   opacity: 0.5;
 }
@@ -2260,7 +2271,7 @@ textarea.form-control-lg {
 .form-switch {
   padding-left: 2.5em;
 }
-.form-switch .form-check-input {
+.form-switch .form-check-input, .form-switch input[type=checkbox], .form-switch form div input[type=radio], form div .form-switch input[type=radio] {
   width: 2em;
   margin-left: -2.5em;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
@@ -2269,14 +2280,14 @@ textarea.form-control-lg {
   transition: background-position 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-switch .form-check-input {
+  .form-switch .form-check-input, .form-switch input[type=checkbox], .form-switch form div input[type=radio], form div .form-switch input[type=radio] {
     transition: none;
   }
 }
-.form-switch .form-check-input:focus {
+.form-switch .form-check-input:focus, .form-switch input[type=checkbox]:focus, .form-switch form div input[type=radio]:focus, form div .form-switch input[type=radio]:focus {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%233b71ca'/%3e%3c/svg%3e");
 }
-.form-switch .form-check-input:checked {
+.form-switch .form-check-input:checked, .form-switch input[type=checkbox]:checked, .form-switch form div input[type=radio]:checked, form div .form-switch input[type=radio]:checked {
   background-position: right center;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
@@ -2284,7 +2295,7 @@ textarea.form-control-lg {
   padding-right: 2.5em;
   padding-left: 0;
 }
-.form-switch.form-check-reverse .form-check-input {
+.form-switch.form-check-reverse .form-check-input, .form-switch.form-check-reverse input[type=checkbox], .form-switch.form-check-reverse form div input[type=radio], form div .form-switch.form-check-reverse input[type=radio] {
   margin-right: -2.5em;
   margin-left: 0;
 }
@@ -2299,7 +2310,7 @@ textarea.form-control-lg {
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-.btn-check[disabled] + .btn, .btn-check[disabled] + input[type=submit], .btn-check:disabled + .btn, .btn-check:disabled + input[type=submit] {
+.btn-check[disabled] + .btn, form div .btn-check[disabled] + input[type=submit], .btn-check:disabled + .btn, form div .btn-check:disabled + input[type=submit] {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -2394,7 +2405,8 @@ textarea.form-control-lg {
 .form-floating {
   position: relative;
 }
-.form-floating > .form-control, .form-floating > input[type=search],
+.form-floating > .form-control, form div .form-floating > input[type=search],
+form div .form-floating > input[type=text],
 .form-floating > .form-control-plaintext,
 .form-floating > .form-select {
   height: calc(3.5rem + 2px);
@@ -2421,21 +2433,26 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.form-floating > .form-control, .form-floating > input[type=search],
+.form-floating > .form-control, form div .form-floating > input[type=search],
+form div .form-floating > input[type=text],
 .form-floating > .form-control-plaintext {
   padding: 1rem 0.75rem;
 }
-.form-floating > .form-control::placeholder, .form-floating > input[type=search]::placeholder,
+.form-floating > .form-control::placeholder, form div .form-floating > input[type=search]::placeholder,
+form div .form-floating > input[type=text]::placeholder,
 .form-floating > .form-control-plaintext::placeholder {
   color: transparent;
 }
-.form-floating > .form-control:focus, .form-floating > input[type=search]:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > input[type=search]:not(:placeholder-shown),
+.form-floating > .form-control:focus, form div .form-floating > input[type=search]:focus,
+form div .form-floating > input[type=text]:focus, .form-floating > .form-control:not(:placeholder-shown), form div .form-floating > input[type=search]:not(:placeholder-shown),
+form div .form-floating > input[type=text]:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
 .form-floating > .form-control-plaintext:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
-.form-floating > .form-control:-webkit-autofill, .form-floating > input[type=search]:-webkit-autofill,
+.form-floating > .form-control:-webkit-autofill, form div .form-floating > input[type=search]:-webkit-autofill,
+form div .form-floating > input[type=text]:-webkit-autofill,
 .form-floating > .form-control-plaintext:-webkit-autofill {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
@@ -2444,15 +2461,18 @@ textarea.form-control-lg {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
-.form-floating > .form-control:focus ~ label, .form-floating > input[type=search]:focus ~ label,
+.form-floating > .form-control:focus ~ label, form div .form-floating > input[type=search]:focus ~ label,
+form div .form-floating > input[type=text]:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
-.form-floating > input[type=search]:not(:placeholder-shown) ~ label,
+form div .form-floating > input[type=search]:not(:placeholder-shown) ~ label,
+form div .form-floating > input[type=text]:not(:placeholder-shown) ~ label,
 .form-floating > .form-control-plaintext ~ label,
 .form-floating > .form-select ~ label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
-.form-floating > .form-control:-webkit-autofill ~ label, .form-floating > input[type=search]:-webkit-autofill ~ label {
+.form-floating > .form-control:-webkit-autofill ~ label, form div .form-floating > input[type=search]:-webkit-autofill ~ label,
+form div .form-floating > input[type=text]:-webkit-autofill ~ label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
@@ -2467,7 +2487,8 @@ textarea.form-control-lg {
   align-items: stretch;
   width: 100%;
 }
-.input-group > .form-control, .input-group > input[type=search],
+.input-group > .form-control, form div .input-group > input[type=search],
+form div .input-group > input[type=text],
 .input-group > .form-select,
 .input-group > .form-floating {
   position: relative;
@@ -2475,16 +2496,17 @@ textarea.form-control-lg {
   width: 1%;
   min-width: 0;
 }
-.input-group > .form-control:focus, .input-group > input[type=search]:focus,
+.input-group > .form-control:focus, form div .input-group > input[type=search]:focus,
+form div .input-group > input[type=text]:focus,
 .input-group > .form-select:focus,
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
-.input-group .btn, .input-group input[type=submit] {
+.input-group .btn, .input-group form div input[type=submit], form div .input-group input[type=submit] {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus, .input-group input[type=submit]:focus {
+.input-group .btn:focus, .input-group form div input[type=submit]:focus, form div .input-group input[type=submit]:focus {
   z-index: 5;
 }
 
@@ -2503,21 +2525,23 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
 }
 
-.input-group-lg > .form-control, .input-group-lg > input[type=search],
+.input-group-lg > .form-control, form div .input-group-lg > input[type=search],
+form div .input-group-lg > input[type=text],
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn,
-.input-group-lg > input[type=submit] {
+form div .input-group-lg > input[type=submit] {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 0.5rem;
 }
 
-.input-group-sm > .form-control, .input-group-sm > input[type=search],
+.input-group-sm > .form-control, form div .input-group-sm > input[type=search],
+form div .input-group-sm > input[type=text],
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn,
-.input-group-sm > input[type=submit] {
+form div .input-group-sm > input[type=submit] {
   padding: 0.25rem 0.5rem;
   font-size: 0.775rem;
   border-radius: 0.25rem;
@@ -2531,7 +2555,8 @@ textarea.form-control-lg {
 .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
 .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
 .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-control,
-.input-group:not(.has-validation) > .form-floating:not(:last-child) > input[type=search],
+form div .input-group:not(.has-validation) > .form-floating:not(:last-child) > input[type=search],
+form div .input-group:not(.has-validation) > .form-floating:not(:last-child) > input[type=text],
 .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-select {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -2539,7 +2564,8 @@ textarea.form-control-lg {
 .input-group.has-validation > :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
 .input-group.has-validation > .dropdown-toggle:nth-last-child(n+4),
 .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-control,
-.input-group.has-validation > .form-floating:nth-last-child(n+3) > input[type=search],
+form div .input-group.has-validation > .form-floating:nth-last-child(n+3) > input[type=search],
+form div .input-group.has-validation > .form-floating:nth-last-child(n+3) > input[type=text],
 .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-select {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -2549,7 +2575,8 @@ textarea.form-control-lg {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group > .form-floating:not(:first-child) > .form-control, .input-group > .form-floating:not(:first-child) > input[type=search],
+.input-group > .form-floating:not(:first-child) > .form-control, form div .input-group > .form-floating:not(:first-child) > input[type=search],
+form div .input-group > .form-floating:not(:first-child) > input[type=text],
 .input-group > .form-floating:not(:first-child) > .form-select {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -2584,7 +2611,10 @@ textarea.form-control-lg {
   display: block;
 }
 
-.was-validated .form-control:valid, .was-validated input[type=search]:valid, .form-control.is-valid, input.is-valid[type=search] {
+.was-validated .form-control:valid, .was-validated form div input[type=search]:valid, form div .was-validated input[type=search]:valid,
+.was-validated form div input[type=text]:valid,
+form div .was-validated input[type=text]:valid, .form-control.is-valid, form div input.is-valid[type=search],
+form div input.is-valid[type=text] {
   border-color: #14a44d;
   padding-right: calc(1.6em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2314a44d' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2592,7 +2622,10 @@ textarea.form-control-lg {
   background-position: right calc(0.4em + 0.1875rem) center;
   background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
 }
-.was-validated .form-control:valid:focus, .was-validated input[type=search]:valid:focus, .form-control.is-valid:focus, input.is-valid[type=search]:focus {
+.was-validated .form-control:valid:focus, .was-validated form div input[type=search]:valid:focus, form div .was-validated input[type=search]:valid:focus,
+.was-validated form div input[type=text]:valid:focus,
+form div .was-validated input[type=text]:valid:focus, .form-control.is-valid:focus, form div input.is-valid[type=search]:focus,
+form div input.is-valid[type=text]:focus {
   border-color: #14a44d;
   box-shadow: 0 0 0 0.25rem rgba(20, 164, 77, 0.25);
 }
@@ -2620,24 +2653,27 @@ textarea.form-control-lg {
   width: calc(3rem + calc(1.6em + 0.75rem));
 }
 
-.was-validated .form-check-input:valid, .form-check-input.is-valid {
+.was-validated .form-check-input:valid, .was-validated input[type=checkbox]:valid, .was-validated form div input[type=radio]:valid, form div .was-validated input[type=radio]:valid, .form-check-input.is-valid, input.is-valid[type=checkbox], form div input.is-valid[type=radio] {
   border-color: #14a44d;
 }
-.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked {
+.was-validated .form-check-input:valid:checked, .was-validated input[type=checkbox]:valid:checked, .was-validated form div input[type=radio]:valid:checked, form div .was-validated input[type=radio]:valid:checked, .form-check-input.is-valid:checked, input.is-valid[type=checkbox]:checked, form div input.is-valid[type=radio]:checked {
   background-color: #14a44d;
 }
-.was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
+.was-validated .form-check-input:valid:focus, .was-validated input[type=checkbox]:valid:focus, .was-validated form div input[type=radio]:valid:focus, form div .was-validated input[type=radio]:valid:focus, .form-check-input.is-valid:focus, input.is-valid[type=checkbox]:focus, form div input.is-valid[type=radio]:focus {
   box-shadow: 0 0 0 0.25rem rgba(20, 164, 77, 0.25);
 }
-.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+.was-validated .form-check-input:valid ~ .form-check-label, .was-validated input[type=checkbox]:valid ~ .form-check-label, .was-validated form div input[type=radio]:valid ~ .form-check-label, form div .was-validated input[type=radio]:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label, input.is-valid[type=checkbox] ~ .form-check-label, form div input.is-valid[type=radio] ~ .form-check-label {
   color: #14a44d;
 }
 
-.form-check-inline .form-check-input ~ .valid-feedback {
+.form-check-inline .form-check-input ~ .valid-feedback, .form-check-inline input[type=checkbox] ~ .valid-feedback, .form-check-inline form div input[type=radio] ~ .valid-feedback, form div .form-check-inline input[type=radio] ~ .valid-feedback {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):valid, .was-validated .input-group > input[type=search]:not(:focus):valid, .input-group > .form-control:not(:focus).is-valid, .input-group > input[type=search]:not(:focus).is-valid,
+.was-validated .input-group > .form-control:not(:focus):valid, .was-validated form div .input-group > input[type=search]:not(:focus):valid, form div .was-validated .input-group > input[type=search]:not(:focus):valid,
+.was-validated form div .input-group > input[type=text]:not(:focus):valid,
+form div .was-validated .input-group > input[type=text]:not(:focus):valid, .input-group > .form-control:not(:focus).is-valid, form div .input-group > input[type=search]:not(:focus).is-valid,
+form div .input-group > input[type=text]:not(:focus).is-valid,
 .was-validated .input-group > .form-select:not(:focus):valid,
 .input-group > .form-select:not(:focus).is-valid,
 .was-validated .input-group > .form-floating:not(:focus-within):valid,
@@ -2674,7 +2710,10 @@ textarea.form-control-lg {
   display: block;
 }
 
-.was-validated .form-control:invalid, .was-validated input[type=search]:invalid, .form-control.is-invalid, input.is-invalid[type=search] {
+.was-validated .form-control:invalid, .was-validated form div input[type=search]:invalid, form div .was-validated input[type=search]:invalid,
+.was-validated form div input[type=text]:invalid,
+form div .was-validated input[type=text]:invalid, .form-control.is-invalid, form div input.is-invalid[type=search],
+form div input.is-invalid[type=text] {
   border-color: #dc4c64;
   padding-right: calc(1.6em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc4c64'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc4c64' stroke='none'/%3e%3c/svg%3e");
@@ -2682,7 +2721,10 @@ textarea.form-control-lg {
   background-position: right calc(0.4em + 0.1875rem) center;
   background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
 }
-.was-validated .form-control:invalid:focus, .was-validated input[type=search]:invalid:focus, .form-control.is-invalid:focus, input.is-invalid[type=search]:focus {
+.was-validated .form-control:invalid:focus, .was-validated form div input[type=search]:invalid:focus, form div .was-validated input[type=search]:invalid:focus,
+.was-validated form div input[type=text]:invalid:focus,
+form div .was-validated input[type=text]:invalid:focus, .form-control.is-invalid:focus, form div input.is-invalid[type=search]:focus,
+form div input.is-invalid[type=text]:focus {
   border-color: #dc4c64;
   box-shadow: 0 0 0 0.25rem rgba(220, 76, 100, 0.25);
 }
@@ -2710,24 +2752,27 @@ textarea.form-control-lg {
   width: calc(3rem + calc(1.6em + 0.75rem));
 }
 
-.was-validated .form-check-input:invalid, .form-check-input.is-invalid {
+.was-validated .form-check-input:invalid, .was-validated input[type=checkbox]:invalid, .was-validated form div input[type=radio]:invalid, form div .was-validated input[type=radio]:invalid, .form-check-input.is-invalid, input.is-invalid[type=checkbox], form div input.is-invalid[type=radio] {
   border-color: #dc4c64;
 }
-.was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked {
+.was-validated .form-check-input:invalid:checked, .was-validated input[type=checkbox]:invalid:checked, .was-validated form div input[type=radio]:invalid:checked, form div .was-validated input[type=radio]:invalid:checked, .form-check-input.is-invalid:checked, input.is-invalid[type=checkbox]:checked, form div input.is-invalid[type=radio]:checked {
   background-color: #dc4c64;
 }
-.was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
+.was-validated .form-check-input:invalid:focus, .was-validated input[type=checkbox]:invalid:focus, .was-validated form div input[type=radio]:invalid:focus, form div .was-validated input[type=radio]:invalid:focus, .form-check-input.is-invalid:focus, input.is-invalid[type=checkbox]:focus, form div input.is-invalid[type=radio]:focus {
   box-shadow: 0 0 0 0.25rem rgba(220, 76, 100, 0.25);
 }
-.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+.was-validated .form-check-input:invalid ~ .form-check-label, .was-validated input[type=checkbox]:invalid ~ .form-check-label, .was-validated form div input[type=radio]:invalid ~ .form-check-label, form div .was-validated input[type=radio]:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label, input.is-invalid[type=checkbox] ~ .form-check-label, form div input.is-invalid[type=radio] ~ .form-check-label {
   color: #dc4c64;
 }
 
-.form-check-inline .form-check-input ~ .invalid-feedback {
+.form-check-inline .form-check-input ~ .invalid-feedback, .form-check-inline input[type=checkbox] ~ .invalid-feedback, .form-check-inline form div input[type=radio] ~ .invalid-feedback, form div .form-check-inline input[type=radio] ~ .invalid-feedback {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):invalid, .was-validated .input-group > input[type=search]:not(:focus):invalid, .input-group > .form-control:not(:focus).is-invalid, .input-group > input[type=search]:not(:focus).is-invalid,
+.was-validated .input-group > .form-control:not(:focus):invalid, .was-validated form div .input-group > input[type=search]:not(:focus):invalid, form div .was-validated .input-group > input[type=search]:not(:focus):invalid,
+.was-validated form div .input-group > input[type=text]:not(:focus):invalid,
+form div .was-validated .input-group > input[type=text]:not(:focus):invalid, .input-group > .form-control:not(:focus).is-invalid, form div .input-group > input[type=search]:not(:focus).is-invalid,
+form div .input-group > input[type=text]:not(:focus).is-invalid,
 .was-validated .input-group > .form-select:not(:focus):invalid,
 .input-group > .form-select:not(:focus).is-invalid,
 .was-validated .input-group > .form-floating:not(:focus-within):invalid,
@@ -2735,7 +2780,7 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
-.btn, input[type=submit] {
+.btn, form div input[type=submit] {
   --mdb-btn-padding-x: 1.5rem;
   --mdb-btn-padding-y: 0.375rem;
   --mdb-btn-font-family: ;
@@ -2769,42 +2814,42 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn, input[type=submit] {
+  .btn, form div input[type=submit] {
     transition: none;
   }
 }
-.btn:hover, input[type=submit]:hover {
+.btn:hover, form div input[type=submit]:hover {
   color: var(--mdb-btn-hover-color);
   background-color: var(--mdb-btn-hover-bg);
   border-color: var(--mdb-btn-hover-border-color);
 }
-.btn-check + .btn:hover, .btn-check + input[type=submit]:hover {
+.btn-check + .btn:hover, form div .btn-check + input[type=submit]:hover {
   color: var(--mdb-btn-color);
   background-color: var(--mdb-btn-bg);
   border-color: var(--mdb-btn-border-color);
 }
-.btn:focus-visible, input[type=submit]:focus-visible {
+.btn:focus-visible, form div input[type=submit]:focus-visible {
   color: var(--mdb-btn-hover-color);
   background-color: var(--mdb-btn-hover-bg);
   border-color: var(--mdb-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--mdb-btn-box-shadow), var(--mdb-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn, .btn-check:focus-visible + input[type=submit] {
+.btn-check:focus-visible + .btn, form div .btn-check:focus-visible + input[type=submit] {
   border-color: var(--mdb-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--mdb-btn-box-shadow), var(--mdb-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, .btn-check:checked + input[type=submit], :not(.btn-check) + .btn:active, :not(.btn-check) + input[type=submit]:active, .btn:first-child:active, input[type=submit]:first-child:active, .btn.active, input.active[type=submit], .btn.show, input.show[type=submit] {
+.btn-check:checked + .btn, form div .btn-check:checked + input[type=submit], :not(.btn-check) + .btn:active, form div :not(.btn-check) + input[type=submit]:active, .btn:first-child:active, form div input[type=submit]:first-child:active, .btn.active, form div input.active[type=submit], .btn.show, form div input.show[type=submit] {
   color: var(--mdb-btn-active-color);
   background-color: var(--mdb-btn-active-bg);
   border-color: var(--mdb-btn-active-border-color);
   box-shadow: var(--mdb-btn-active-shadow);
 }
-.btn-check:checked + .btn:focus-visible, .btn-check:checked + input[type=submit]:focus-visible, :not(.btn-check) + .btn:active:focus-visible, :not(.btn-check) + input[type=submit]:active:focus-visible, .btn:first-child:active:focus-visible, input[type=submit]:first-child:active:focus-visible, .btn.active:focus-visible, input.active[type=submit]:focus-visible, .btn.show:focus-visible, input.show[type=submit]:focus-visible {
+.btn-check:checked + .btn:focus-visible, form div .btn-check:checked + input[type=submit]:focus-visible, :not(.btn-check) + .btn:active:focus-visible, form div :not(.btn-check) + input[type=submit]:active:focus-visible, .btn:first-child:active:focus-visible, form div input[type=submit]:first-child:active:focus-visible, .btn.active:focus-visible, form div input.active[type=submit]:focus-visible, .btn.show:focus-visible, form div input.show[type=submit]:focus-visible {
   box-shadow: var(--mdb-btn-active-shadow), var(--mdb-btn-focus-box-shadow);
 }
-.btn:disabled, input[type=submit]:disabled, .btn.disabled, input.disabled[type=submit], fieldset:disabled .btn, fieldset:disabled input[type=submit] {
+.btn:disabled, form div input[type=submit]:disabled, .btn.disabled, form div input.disabled[type=submit], fieldset:disabled .btn, fieldset:disabled form div input[type=submit], form div fieldset:disabled input[type=submit] {
   color: var(--mdb-btn-disabled-color);
   pointer-events: none;
   background-color: var(--mdb-btn-disabled-bg);
@@ -2813,7 +2858,7 @@ textarea.form-control-lg {
   box-shadow: none;
 }
 
-.btn-primary, input[type=submit] {
+.btn-primary, form div input[type=submit] {
   --mdb-btn-color: #fff;
   --mdb-btn-bg: #3b71ca;
   --mdb-btn-border-color: #3b71ca;
@@ -3110,14 +3155,14 @@ textarea.form-control-lg {
   color: var(--mdb-btn-hover-color);
 }
 
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > input[type=submit] {
+.btn-lg, .btn-group-lg > .btn, form div .btn-group-lg > input[type=submit] {
   --mdb-btn-padding-y: 0.5rem;
   --mdb-btn-padding-x: 1.6875rem;
   --mdb-btn-font-size: 0.875rem;
   --mdb-btn-border-radius: 0.5rem;
 }
 
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > input[type=submit] {
+.btn-sm, .btn-group-sm > .btn, form div .btn-group-sm > input[type=submit] {
   --mdb-btn-padding-y: 0.25rem;
   --mdb-btn-padding-x: 1rem;
   --mdb-btn-font-size: 0.75rem;
@@ -3483,35 +3528,35 @@ textarea.form-control-lg {
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn, .btn-group > input[type=submit],
+.btn-group > .btn, form div .btn-group > input[type=submit],
 .btn-group-vertical > .btn,
-.btn-group-vertical > input[type=submit] {
+form div .btn-group-vertical > input[type=submit] {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn-check:checked + .btn, .btn-group > .btn-check:checked + input[type=submit],
+.btn-group > .btn-check:checked + .btn, form div .btn-group > .btn-check:checked + input[type=submit],
 .btn-group > .btn-check:focus + .btn,
-.btn-group > .btn-check:focus + input[type=submit],
+form div .btn-group > .btn-check:focus + input[type=submit],
 .btn-group > .btn:hover,
-.btn-group > input[type=submit]:hover,
+form div .btn-group > input[type=submit]:hover,
 .btn-group > .btn:focus,
-.btn-group > input[type=submit]:focus,
+form div .btn-group > input[type=submit]:focus,
 .btn-group > .btn:active,
-.btn-group > input[type=submit]:active,
+form div .btn-group > input[type=submit]:active,
 .btn-group > .btn.active,
-.btn-group > input.active[type=submit],
+form div .btn-group > input.active[type=submit],
 .btn-group-vertical > .btn-check:checked + .btn,
-.btn-group-vertical > .btn-check:checked + input[type=submit],
+form div .btn-group-vertical > .btn-check:checked + input[type=submit],
 .btn-group-vertical > .btn-check:focus + .btn,
-.btn-group-vertical > .btn-check:focus + input[type=submit],
+form div .btn-group-vertical > .btn-check:focus + input[type=submit],
 .btn-group-vertical > .btn:hover,
-.btn-group-vertical > input[type=submit]:hover,
+form div .btn-group-vertical > input[type=submit]:hover,
 .btn-group-vertical > .btn:focus,
-.btn-group-vertical > input[type=submit]:focus,
+form div .btn-group-vertical > input[type=submit]:focus,
 .btn-group-vertical > .btn:active,
-.btn-group-vertical > input[type=submit]:active,
+form div .btn-group-vertical > input[type=submit]:active,
 .btn-group-vertical > .btn.active,
-.btn-group-vertical > input.active[type=submit] {
+form div .btn-group-vertical > input.active[type=submit] {
   z-index: 1;
 }
 
@@ -3527,23 +3572,23 @@ textarea.form-control-lg {
 .btn-group {
   border-radius: 0.25rem;
 }
-.btn-group > :not(.btn-check:first-child) + .btn, .btn-group > :not(.btn-check:first-child) + input[type=submit],
+.btn-group > :not(.btn-check:first-child) + .btn, form div .btn-group > :not(.btn-check:first-child) + input[type=submit],
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -2px;
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > input[type=submit]:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), form div .btn-group > input[type=submit]:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn.dropdown-toggle-split:first-child,
-.btn-group > input.dropdown-toggle-split[type=submit]:first-child,
+form div .btn-group > input.dropdown-toggle-split[type=submit]:first-child,
 .btn-group > .btn-group:not(:last-child) > .btn,
-.btn-group > .btn-group:not(:last-child) > input[type=submit] {
+form div .btn-group > .btn-group:not(:last-child) > input[type=submit] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:nth-child(n+3), .btn-group > input[type=submit]:nth-child(n+3),
+.btn-group > .btn:nth-child(n+3), form div .btn-group > input[type=submit]:nth-child(n+3),
 .btn-group > :not(.btn-check) + .btn,
-.btn-group > :not(.btn-check) + input[type=submit],
+form div .btn-group > :not(.btn-check) + input[type=submit],
 .btn-group > .btn-group:not(:first-child) > .btn,
-.btn-group > .btn-group:not(:first-child) > input[type=submit] {
+form div .btn-group > .btn-group:not(:first-child) > input[type=submit] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3559,12 +3604,12 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > input[type=submit] + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, form div .btn-group-sm > input[type=submit] + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > input[type=submit] + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, form div .btn-group-lg > input[type=submit] + .dropdown-toggle-split {
   padding-right: 1.265625rem;
   padding-left: 1.265625rem;
 }
@@ -3581,23 +3626,23 @@ textarea.form-control-lg {
   align-items: flex-start;
   justify-content: center;
 }
-.btn-group-vertical > .btn, .btn-group-vertical > input[type=submit],
+.btn-group-vertical > .btn, form div .btn-group-vertical > input[type=submit],
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
-.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > input[type=submit]:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), form div .btn-group-vertical > input[type=submit]:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -2px;
 }
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > input[type=submit]:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), form div .btn-group-vertical > input[type=submit]:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
-.btn-group-vertical > .btn-group:not(:last-child) > input[type=submit] {
+form div .btn-group-vertical > .btn-group:not(:last-child) > input[type=submit] {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn ~ .btn, .btn-group-vertical > input[type=submit] ~ .btn, .btn-group-vertical > .btn ~ input[type=submit], .btn-group-vertical > input[type=submit] ~ input[type=submit],
+.btn-group-vertical > .btn ~ .btn, form div .btn-group-vertical > input[type=submit] ~ .btn, form div .btn-group-vertical > .btn ~ input[type=submit], form div .btn-group-vertical > input[type=submit] ~ input[type=submit],
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
-.btn-group-vertical > .btn-group:not(:first-child) > input[type=submit] {
+form div .btn-group-vertical > .btn-group:not(:first-child) > input[type=submit] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -4480,7 +4525,7 @@ textarea.form-control-lg {
   display: none;
 }
 
-.btn .badge, input[type=submit] .badge {
+.btn .badge, form div input[type=submit] .badge {
   position: relative;
   top: -1px;
 }
@@ -4791,7 +4836,7 @@ textarea.form-control-lg {
   background-color: currentcolor;
   opacity: 0.5;
 }
-.placeholder.btn::before, input.placeholder[type=submit]::before {
+.placeholder.btn::before, form div input.placeholder[type=submit]::before {
   display: inline-block;
   content: "";
 }
@@ -12115,7 +12160,7 @@ hr.vr {
   opacity: var(--mdb-divider-blurry-opacity);
 }
 
-a {
+a, a:visited {
   text-decoration: none;
 }
 
@@ -13092,41 +13137,48 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   box-shadow: var(--mdb-image-hover-shadow-box-shadow-soft);
 }
 
-.form-control, input[type=search] {
+.form-control, form div input[type=search],
+form div input[type=text] {
   min-height: auto;
   padding: 4.5px 12px 3.68px 12px;
   transition: all 0.1s linear;
   box-shadow: none;
 }
-.form-control:focus, input[type=search]:focus {
+.form-control:focus, form div input[type=search]:focus,
+form div input[type=text]:focus {
   box-shadow: none;
   transition: all 0.1s linear;
   border-color: #3b71ca;
   box-shadow: inset 0px 0px 0px 1px #3b71ca;
 }
-.form-control.form-control-sm, input.form-control-sm[type=search] {
+.form-control.form-control-sm, form div input.form-control-sm[type=search],
+form div input.form-control-sm[type=text] {
   font-size: 0.775rem;
   line-height: 1.5;
 }
-.form-control.form-control-lg, input.form-control-lg[type=search] {
+.form-control.form-control-lg, form div input.form-control-lg[type=search],
+form div input.form-control-lg[type=text] {
   line-height: 2.15;
   border-radius: 0.25rem;
 }
 
-.form-outline {
+.form-outline, form div input[type=search],
+form div input[type=text], form div {
   position: relative;
   width: 100%;
 }
-.form-outline .form-helper {
+.form-outline .form-helper, form div input[type=search] .form-helper,
+form div input[type=text] .form-helper, form div .form-helper {
   width: 100%;
   position: absolute;
   font-size: 0.875em;
   color: #757575;
 }
-.form-outline .form-helper .form-counter {
+.form-outline .form-helper .form-counter, form div .form-helper .form-counter {
   text-align: right;
 }
-.form-outline .trailing {
+.form-outline .trailing, form div input[type=search] .trailing,
+form div input[type=text] .trailing, form div .trailing {
   position: absolute;
   right: 10px;
   left: initial;
@@ -13134,10 +13186,13 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   transform: translateY(-50%);
   pointer-events: none;
 }
-.form-outline .form-icon-trailing {
+.form-outline .form-icon-trailing, form div input[type=search] .form-icon-trailing,
+form div input[type=text] .form-icon-trailing, form div .form-icon-trailing {
   padding-right: 2rem !important;
 }
-.form-outline .form-control, .form-outline input[type=search] {
+.form-outline .form-control, form div input[type=search] .form-control,
+form div input[type=text] .form-control, form div .form-control, form div input[type=search],
+form div input[type=text] {
   min-height: auto;
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
@@ -13147,7 +13202,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   background: transparent;
   transition: all 0.2s linear;
 }
-.form-outline .form-control ~ .form-label, .form-outline input[type=search] ~ .form-label {
+.form-outline .form-control ~ .form-label, form div .form-control ~ .form-label, form div input[type=search] ~ .form-label,
+form div input[type=text] ~ .form-label {
   position: absolute;
   top: 0;
   max-width: 90%;
@@ -13162,7 +13218,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   color: rgba(0, 0, 0, 0.6);
   margin-bottom: 0;
 }
-.form-outline .form-control ~ .form-notch, .form-outline input[type=search] ~ .form-notch {
+.form-outline .form-control ~ .form-notch, form div .form-control ~ .form-notch, form div input[type=search] ~ .form-notch,
+form div input[type=text] ~ .form-notch {
   display: flex;
   position: absolute;
   left: 0;
@@ -13173,7 +13230,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   text-align: left;
   pointer-events: none;
 }
-.form-outline .form-control ~ .form-notch div, .form-outline input[type=search] ~ .form-notch div {
+.form-outline .form-control ~ .form-notch div, form div .form-control ~ .form-notch div, form div input[type=search] ~ .form-notch div,
+form div input[type=text] ~ .form-notch div {
   pointer-events: none;
   border: 1px solid;
   border-color: #bdbdbd;
@@ -13181,7 +13239,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   background: transparent;
   transition: all 0.2s linear;
 }
-.form-outline .form-control ~ .form-notch .form-notch-leading, .form-outline input[type=search] ~ .form-notch .form-notch-leading {
+.form-outline .form-control ~ .form-notch .form-notch-leading, form div .form-control ~ .form-notch .form-notch-leading, form div input[type=search] ~ .form-notch .form-notch-leading,
+form div input[type=text] ~ .form-notch .form-notch-leading {
   left: 0;
   top: 0;
   height: 100%;
@@ -13189,7 +13248,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   border-right: none;
   border-radius: 0.25rem 0 0 0.25rem;
 }
-.form-outline .form-control ~ .form-notch .form-notch-middle, .form-outline input[type=search] ~ .form-notch .form-notch-middle {
+.form-outline .form-control ~ .form-notch .form-notch-middle, form div .form-control ~ .form-notch .form-notch-middle, form div input[type=search] ~ .form-notch .form-notch-middle,
+form div input[type=text] ~ .form-notch .form-notch-middle {
   flex: 0 0 auto;
   width: auto;
   max-width: calc(100% - 1rem);
@@ -13197,110 +13257,216 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   border-right: none;
   border-left: none;
 }
-.form-outline .form-control ~ .form-notch .form-notch-trailing, .form-outline input[type=search] ~ .form-notch .form-notch-trailing {
+.form-outline .form-control ~ .form-notch .form-notch-trailing, form div .form-control ~ .form-notch .form-notch-trailing, form div input[type=search] ~ .form-notch .form-notch-trailing,
+form div input[type=text] ~ .form-notch .form-notch-trailing {
   flex-grow: 1;
   height: 100%;
   border-left: none;
   border-radius: 0 0.25rem 0.25rem 0;
 }
-.form-outline .form-control:not(.placeholder-active)::placeholder, .form-outline input[type=search]:not(.placeholder-active)::placeholder {
+.form-outline .form-control:not(.placeholder-active)::placeholder, form div .form-control:not(.placeholder-active)::placeholder, form div input[type=search]:not(.placeholder-active)::placeholder,
+form div input[type=text]:not(.placeholder-active)::placeholder {
   opacity: 0;
 }
-.form-outline .form-control:focus::placeholder, .form-outline input[type=search]:focus::placeholder, .form-outline .form-control.active::placeholder, .form-outline input.active[type=search]::placeholder {
+.form-outline .form-control:focus::placeholder, form div .form-control:focus::placeholder, form div input[type=search]:focus::placeholder,
+form div input[type=text]:focus::placeholder, .form-outline .form-control.active::placeholder, form div .form-control.active::placeholder, form div input.active[type=search]::placeholder,
+form div input.active[type=text]::placeholder {
   opacity: 1;
 }
-.form-outline .form-control:focus, .form-outline input[type=search]:focus {
+.form-outline .form-control:focus, form div .form-control:focus, form div input[type=search]:focus,
+form div input[type=text]:focus {
   box-shadow: none !important;
 }
-.form-outline .form-control:focus ~ .form-label, .form-outline input[type=search]:focus ~ .form-label, .form-outline .form-control.active ~ .form-label, .form-outline input.active[type=search] ~ .form-label {
+.form-outline .form-control:focus ~ .form-label, form div .form-control:focus ~ .form-label, form div input[type=search]:focus ~ .form-label,
+form div input[type=text]:focus ~ .form-label, .form-outline .form-control.active ~ .form-label, form div .form-control.active ~ .form-label, form div input.active[type=search] ~ .form-label,
+form div input.active[type=text] ~ .form-label {
   transform: translateY(-1rem) translateY(0.1rem) scale(0.8);
 }
-.form-outline .form-control:focus ~ .form-label, .form-outline input[type=search]:focus ~ .form-label {
+.form-outline .form-control:focus ~ .form-label, form div .form-control:focus ~ .form-label, form div input[type=search]:focus ~ .form-label,
+form div input[type=text]:focus ~ .form-label {
   color: #3b71ca;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-middle, .form-outline input[type=search]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.active ~ .form-notch .form-notch-middle, .form-outline input.active[type=search] ~ .form-notch .form-notch-middle {
+.form-outline .form-control:focus ~ .form-notch .form-notch-middle, form div .form-control:focus ~ .form-notch .form-notch-middle, form div input[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input[type=text]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.active ~ .form-notch .form-notch-middle, form div .form-control.active ~ .form-notch .form-notch-middle, form div input.active[type=search] ~ .form-notch .form-notch-middle,
+form div input.active[type=text] ~ .form-notch .form-notch-middle {
   border-right: none;
   border-left: none;
   border-top: 1px solid transparent;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-middle, .form-outline input[type=search]:focus ~ .form-notch .form-notch-middle {
+.form-outline .form-control:focus ~ .form-notch .form-notch-middle, form div .form-control:focus ~ .form-notch .form-notch-middle, form div input[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input[type=text]:focus ~ .form-notch .form-notch-middle {
   border-color: #3b71ca;
   box-shadow: 0 1px 0 0 #3b71ca;
   border-top: 1px solid transparent;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-leading, .form-outline input[type=search]:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.active ~ .form-notch .form-notch-leading, .form-outline input.active[type=search] ~ .form-notch .form-notch-leading {
+.form-outline .form-control:focus ~ .form-notch .form-notch-leading, form div .form-control:focus ~ .form-notch .form-notch-leading, form div input[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input[type=text]:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.active ~ .form-notch .form-notch-leading, form div .form-control.active ~ .form-notch .form-notch-leading, form div input.active[type=search] ~ .form-notch .form-notch-leading,
+form div input.active[type=text] ~ .form-notch .form-notch-leading {
   border-right: none;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-leading, .form-outline input[type=search]:focus ~ .form-notch .form-notch-leading {
+.form-outline .form-control:focus ~ .form-notch .form-notch-leading, form div .form-control:focus ~ .form-notch .form-notch-leading, form div input[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input[type=text]:focus ~ .form-notch .form-notch-leading {
   border-color: #3b71ca;
   box-shadow: -1px 0 0 0 #3b71ca, 0 1px 0 0 #3b71ca, 0 -1px 0 0 #3b71ca;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-trailing, .form-outline input[type=search]:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.active ~ .form-notch .form-notch-trailing, .form-outline input.active[type=search] ~ .form-notch .form-notch-trailing {
+.form-outline .form-control:focus ~ .form-notch .form-notch-trailing, form div .form-control:focus ~ .form-notch .form-notch-trailing, form div input[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input[type=text]:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.active ~ .form-notch .form-notch-trailing, form div .form-control.active ~ .form-notch .form-notch-trailing, form div input.active[type=search] ~ .form-notch .form-notch-trailing,
+form div input.active[type=text] ~ .form-notch .form-notch-trailing {
   border-left: none;
 }
-.form-outline .form-control:focus ~ .form-notch .form-notch-trailing, .form-outline input[type=search]:focus ~ .form-notch .form-notch-trailing {
+.form-outline .form-control:focus ~ .form-notch .form-notch-trailing, form div .form-control:focus ~ .form-notch .form-notch-trailing, form div input[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input[type=text]:focus ~ .form-notch .form-notch-trailing {
   border-color: #3b71ca;
   box-shadow: 1px 0 0 0 #3b71ca, 0 -1px 0 0 #3b71ca, 0 1px 0 0 #3b71ca;
 }
-.form-outline .form-control:disabled, .form-outline input[type=search]:disabled, .form-outline .form-control.disabled, .form-outline input.disabled[type=search], .form-outline .form-control[readonly], .form-outline input[readonly][type=search] {
+.form-outline .form-control:disabled, form div .form-control:disabled, form div input[type=search]:disabled,
+form div input[type=text]:disabled, .form-outline .form-control.disabled, form div .form-control.disabled, form div input.disabled[type=search],
+form div input.disabled[type=text], .form-outline .form-control[readonly], form div .form-control[readonly], form div input[readonly][type=search],
+form div input[readonly][type=text] {
   background-color: #e9ecef;
 }
-.form-outline .form-control.form-control-lg, .form-outline input.form-control-lg[type=search] {
+.form-outline .form-control.form-control-lg, form div .form-control.form-control-lg, form div input.form-control-lg[type=search],
+form div input.form-control-lg[type=text] {
   font-size: 1rem;
   line-height: 2.15;
 }
-.form-outline .form-control.form-control-lg ~ .form-label, .form-outline input.form-control-lg[type=search] ~ .form-label {
+.form-outline .form-control.form-control-lg ~ .form-label, form div .form-control.form-control-lg ~ .form-label, form div input.form-control-lg[type=search] ~ .form-label,
+form div input.form-control-lg[type=text] ~ .form-label {
   padding-top: 0.7rem;
 }
-.form-outline .form-control.form-control-lg:focus ~ .form-label, .form-outline input.form-control-lg[type=search]:focus ~ .form-label, .form-outline .form-control.form-control-lg.active ~ .form-label, .form-outline input.form-control-lg.active[type=search] ~ .form-label {
+.form-outline .form-control.form-control-lg:focus ~ .form-label, form div .form-control.form-control-lg:focus ~ .form-label, form div input.form-control-lg[type=search]:focus ~ .form-label,
+form div input.form-control-lg[type=text]:focus ~ .form-label, .form-outline .form-control.form-control-lg.active ~ .form-label, form div .form-control.form-control-lg.active ~ .form-label, form div input.form-control-lg.active[type=search] ~ .form-label,
+form div input.form-control-lg.active[type=text] ~ .form-label {
   transform: translateY(-1.25rem) translateY(0.1rem) scale(0.8);
 }
-.form-outline .form-control.form-control-sm, .form-outline input.form-control-sm[type=search] {
+.form-outline .form-control.form-control-sm, form div .form-control.form-control-sm, form div input.form-control-sm[type=search],
+form div input.form-control-sm[type=text] {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   font-size: 0.775rem;
   line-height: 1.5;
 }
-.form-outline .form-control.form-control-sm ~ .form-label, .form-outline input.form-control-sm[type=search] ~ .form-label {
+.form-outline .form-control.form-control-sm ~ .form-label, form div .form-control.form-control-sm ~ .form-label, form div input.form-control-sm[type=search] ~ .form-label,
+form div input.form-control-sm[type=text] ~ .form-label {
   padding-top: 0.33rem;
   font-size: 0.775rem;
 }
-.form-outline .form-control.form-control-sm:focus ~ .form-label, .form-outline input.form-control-sm[type=search]:focus ~ .form-label, .form-outline .form-control.form-control-sm.active ~ .form-label, .form-outline input.form-control-sm.active[type=search] ~ .form-label {
+.form-outline .form-control.form-control-sm:focus ~ .form-label, form div .form-control.form-control-sm:focus ~ .form-label, form div input.form-control-sm[type=search]:focus ~ .form-label,
+form div input.form-control-sm[type=text]:focus ~ .form-label, .form-outline .form-control.form-control-sm.active ~ .form-label, form div .form-control.form-control-sm.active ~ .form-label, form div input.form-control-sm.active[type=search] ~ .form-label,
+form div input.form-control-sm.active[type=text] ~ .form-label {
   transform: translateY(-0.85rem) translateY(0.1rem) scale(0.8);
 }
-.form-outline.form-white .form-control, .form-outline.form-white input[type=search] {
+.form-outline.form-white .form-control, .form-outline.form-white form div input[type=search], form div .form-outline.form-white input[type=search],
+.form-outline.form-white form div input[type=text],
+form div .form-outline.form-white input[type=text], form div input.form-white[type=search] .form-control, form div input.form-white[type=search] input[type=search],
+form div input.form-white[type=search] input[type=text],
+form div input.form-white[type=text] .form-control,
+form div input.form-white[type=text] input[type=search],
+form div input.form-white[type=text] input[type=text], form div.form-white .form-control, form div.form-white input[type=search],
+form div.form-white input[type=text] {
   color: #fff;
 }
-.form-outline.form-white .form-control ~ .form-label, .form-outline.form-white input[type=search] ~ .form-label {
+.form-outline.form-white .form-control ~ .form-label, .form-outline.form-white form div input[type=search] ~ .form-label, form div .form-outline.form-white input[type=search] ~ .form-label,
+.form-outline.form-white form div input[type=text] ~ .form-label,
+form div .form-outline.form-white input[type=text] ~ .form-label, form div input.form-white[type=search] .form-control ~ .form-label, form div input.form-white[type=search] input[type=search] ~ .form-label,
+form div input.form-white[type=search] input[type=text] ~ .form-label,
+form div input.form-white[type=text] .form-control ~ .form-label,
+form div input.form-white[type=text] input[type=search] ~ .form-label,
+form div input.form-white[type=text] input[type=text] ~ .form-label, form div.form-white .form-control ~ .form-label, form div.form-white input[type=search] ~ .form-label,
+form div.form-white input[type=text] ~ .form-label {
   color: #fbfbfb;
 }
-.form-outline.form-white .form-control ~ .form-notch div, .form-outline.form-white input[type=search] ~ .form-notch div {
+.form-outline.form-white .form-control ~ .form-notch div, .form-outline.form-white form div input[type=search] ~ .form-notch div, form div .form-outline.form-white input[type=search] ~ .form-notch div,
+.form-outline.form-white form div input[type=text] ~ .form-notch div,
+form div .form-outline.form-white input[type=text] ~ .form-notch div, form div input.form-white[type=search] .form-control ~ .form-notch div, form div input.form-white[type=search] input[type=search] ~ .form-notch div,
+form div input.form-white[type=search] input[type=text] ~ .form-notch div,
+form div input.form-white[type=text] .form-control ~ .form-notch div,
+form div input.form-white[type=text] input[type=search] ~ .form-notch div,
+form div input.form-white[type=text] input[type=text] ~ .form-notch div, form div.form-white .form-control ~ .form-notch div, form div.form-white input[type=search] ~ .form-notch div,
+form div.form-white input[type=text] ~ .form-notch div {
   border-color: #fbfbfb;
 }
-.form-outline.form-white .form-control:focus ~ .form-label, .form-outline.form-white input[type=search]:focus ~ .form-label {
+.form-outline.form-white .form-control:focus ~ .form-label, .form-outline.form-white form div input[type=search]:focus ~ .form-label, form div .form-outline.form-white input[type=search]:focus ~ .form-label,
+.form-outline.form-white form div input[type=text]:focus ~ .form-label,
+form div .form-outline.form-white input[type=text]:focus ~ .form-label, form div input.form-white[type=search] .form-control:focus ~ .form-label, form div input.form-white[type=search] input[type=search]:focus ~ .form-label,
+form div input.form-white[type=search] input[type=text]:focus ~ .form-label,
+form div input.form-white[type=text] .form-control:focus ~ .form-label,
+form div input.form-white[type=text] input[type=search]:focus ~ .form-label,
+form div input.form-white[type=text] input[type=text]:focus ~ .form-label, form div.form-white .form-control:focus ~ .form-label, form div.form-white input[type=search]:focus ~ .form-label,
+form div.form-white input[type=text]:focus ~ .form-label {
   color: #fff;
 }
-.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-middle, .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-middle {
+.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-middle, .form-outline.form-white form div input[type=search]:focus ~ .form-notch .form-notch-middle, form div .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-middle,
+.form-outline.form-white form div input[type=text]:focus ~ .form-notch .form-notch-middle,
+form div .form-outline.form-white input[type=text]:focus ~ .form-notch .form-notch-middle, form div input.form-white[type=search] .form-control:focus ~ .form-notch .form-notch-middle, form div input.form-white[type=search] input[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.form-white[type=search] input[type=text]:focus ~ .form-notch .form-notch-middle,
+form div input.form-white[type=text] .form-control:focus ~ .form-notch .form-notch-middle,
+form div input.form-white[type=text] input[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.form-white[type=text] input[type=text]:focus ~ .form-notch .form-notch-middle, form div.form-white .form-control:focus ~ .form-notch .form-notch-middle, form div.form-white input[type=search]:focus ~ .form-notch .form-notch-middle,
+form div.form-white input[type=text]:focus ~ .form-notch .form-notch-middle {
   border-color: #fff;
   box-shadow: 0 1px 0 0 #fff;
   border-top: 1px solid transparent;
 }
-.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-leading, .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-leading {
+.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-leading, .form-outline.form-white form div input[type=search]:focus ~ .form-notch .form-notch-leading, form div .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-leading,
+.form-outline.form-white form div input[type=text]:focus ~ .form-notch .form-notch-leading,
+form div .form-outline.form-white input[type=text]:focus ~ .form-notch .form-notch-leading, form div input.form-white[type=search] .form-control:focus ~ .form-notch .form-notch-leading, form div input.form-white[type=search] input[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input.form-white[type=search] input[type=text]:focus ~ .form-notch .form-notch-leading,
+form div input.form-white[type=text] .form-control:focus ~ .form-notch .form-notch-leading,
+form div input.form-white[type=text] input[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input.form-white[type=text] input[type=text]:focus ~ .form-notch .form-notch-leading, form div.form-white .form-control:focus ~ .form-notch .form-notch-leading, form div.form-white input[type=search]:focus ~ .form-notch .form-notch-leading,
+form div.form-white input[type=text]:focus ~ .form-notch .form-notch-leading {
   border-color: #fff;
   box-shadow: -1px 0 0 0 #fff, 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
 }
-.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-trailing, .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-trailing {
+.form-outline.form-white .form-control:focus ~ .form-notch .form-notch-trailing, .form-outline.form-white form div input[type=search]:focus ~ .form-notch .form-notch-trailing, form div .form-outline.form-white input[type=search]:focus ~ .form-notch .form-notch-trailing,
+.form-outline.form-white form div input[type=text]:focus ~ .form-notch .form-notch-trailing,
+form div .form-outline.form-white input[type=text]:focus ~ .form-notch .form-notch-trailing, form div input.form-white[type=search] .form-control:focus ~ .form-notch .form-notch-trailing, form div input.form-white[type=search] input[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input.form-white[type=search] input[type=text]:focus ~ .form-notch .form-notch-trailing,
+form div input.form-white[type=text] .form-control:focus ~ .form-notch .form-notch-trailing,
+form div input.form-white[type=text] input[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input.form-white[type=text] input[type=text]:focus ~ .form-notch .form-notch-trailing, form div.form-white .form-control:focus ~ .form-notch .form-notch-trailing, form div.form-white input[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div.form-white input[type=text]:focus ~ .form-notch .form-notch-trailing {
   border-color: #fff;
   box-shadow: 1px 0 0 0 #fff, 0 -1px 0 0 #fff, 0 1px 0 0 #fff;
 }
-.form-outline.form-white .form-control::placeholder, .form-outline.form-white input[type=search]::placeholder {
+.form-outline.form-white .form-control::placeholder, .form-outline.form-white form div input[type=search]::placeholder, form div .form-outline.form-white input[type=search]::placeholder,
+.form-outline.form-white form div input[type=text]::placeholder,
+form div .form-outline.form-white input[type=text]::placeholder, form div input.form-white[type=search] .form-control::placeholder, form div input.form-white[type=search] input[type=search]::placeholder,
+form div input.form-white[type=search] input[type=text]::placeholder,
+form div input.form-white[type=text] .form-control::placeholder,
+form div input.form-white[type=text] input[type=search]::placeholder,
+form div input.form-white[type=text] input[type=text]::placeholder, form div.form-white .form-control::placeholder, form div.form-white input[type=search]::placeholder,
+form div.form-white input[type=text]::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
-.form-outline.form-white .form-control:disabled, .form-outline.form-white input[type=search]:disabled, .form-outline.form-white .form-control.disabled, .form-outline.form-white input.disabled[type=search], .form-outline.form-white .form-control[readonly], .form-outline.form-white input[readonly][type=search] {
+.form-outline.form-white .form-control:disabled, .form-outline.form-white form div input[type=search]:disabled, form div .form-outline.form-white input[type=search]:disabled,
+.form-outline.form-white form div input[type=text]:disabled,
+form div .form-outline.form-white input[type=text]:disabled, form div input.form-white[type=search] .form-control:disabled, form div input.form-white[type=search] input[type=search]:disabled,
+form div input.form-white[type=search] input[type=text]:disabled,
+form div input.form-white[type=text] .form-control:disabled,
+form div input.form-white[type=text] input[type=search]:disabled,
+form div input.form-white[type=text] input[type=text]:disabled, form div.form-white .form-control:disabled, form div.form-white input[type=search]:disabled,
+form div.form-white input[type=text]:disabled, .form-outline.form-white .form-control.disabled, .form-outline.form-white form div input.disabled[type=search], form div .form-outline.form-white input.disabled[type=search],
+.form-outline.form-white form div input.disabled[type=text],
+form div .form-outline.form-white input.disabled[type=text], form div input.form-white[type=search] .form-control.disabled, form div input.form-white[type=search] input.disabled[type=search],
+form div input.form-white[type=search] input.disabled[type=text],
+form div input.form-white[type=text] .form-control.disabled,
+form div input.form-white[type=text] input.disabled[type=search],
+form div input.form-white[type=text] input.disabled[type=text], form div.form-white .form-control.disabled, form div.form-white input.disabled[type=search],
+form div.form-white input.disabled[type=text], .form-outline.form-white .form-control[readonly], .form-outline.form-white form div input[readonly][type=search], form div .form-outline.form-white input[readonly][type=search],
+.form-outline.form-white form div input[readonly][type=text],
+form div .form-outline.form-white input[readonly][type=text], form div input.form-white[type=search] .form-control[readonly], form div input.form-white[type=search] input[readonly][type=search],
+form div input.form-white[type=search] input[readonly][type=text],
+form div input.form-white[type=text] .form-control[readonly],
+form div input.form-white[type=text] input[readonly][type=search],
+form div input.form-white[type=text] input[readonly][type=text], form div.form-white .form-control[readonly], form div.form-white input[readonly][type=search],
+form div.form-white input[readonly][type=text] {
   background-color: rgba(255, 255, 255, 0.45);
 }
 
-.select-input.form-control[readonly]:not([disabled]), input.select-input[readonly][type=search]:not([disabled]) {
+.select-input.form-control[readonly]:not([disabled]), form div input.select-input[readonly][type=search]:not([disabled]),
+form div input.select-input[readonly][type=text]:not([disabled]) {
   background-color: transparent;
 }
 
@@ -13318,14 +13484,14 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   min-height: 1.5rem;
 }
 
-.form-check-input {
+.form-check-input, input[type=checkbox], form div input[type=radio] {
   position: relative;
   width: 1.125rem;
   height: 1.125rem;
   background-color: #fff;
   border: 0.125rem solid rgba(0, 0, 0, 0.25);
 }
-.form-check-input:before {
+.form-check-input:before, input[type=checkbox]:before, form div input[type=radio]:before {
   content: "";
   position: absolute;
   box-shadow: 0px 0px 0px 13px transparent;
@@ -13337,51 +13503,51 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   pointer-events: none;
   transform: scale(0);
 }
-.form-check-input:hover {
+.form-check-input:hover, input[type=checkbox]:hover, form div input[type=radio]:hover {
   cursor: pointer;
 }
-.form-check-input:hover:before {
+.form-check-input:hover:before, input[type=checkbox]:hover:before, form div input[type=radio]:hover:before {
   opacity: 0.04;
   box-shadow: 0px 0px 0px 13px rgba(0, 0, 0, 0.6);
 }
-.form-check-input:focus {
+.form-check-input:focus, input[type=checkbox]:focus, form div input[type=radio]:focus {
   box-shadow: none;
   border-color: rgba(0, 0, 0, 0.25);
   transition: border-color 0.2s;
 }
-.form-check-input:focus:before {
+.form-check-input:focus:before, input[type=checkbox]:focus:before, form div input[type=radio]:focus:before {
   opacity: 0.12;
   box-shadow: 0px 0px 0px 13px rgba(0, 0, 0, 0.6);
   transform: scale(1);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.form-check-input:checked {
+.form-check-input:checked, input[type=checkbox]:checked, form div input[type=radio]:checked {
   border-color: #3b71ca;
 }
-.form-check-input:checked:before {
+.form-check-input:checked:before, input[type=checkbox]:checked:before, form div input[type=radio]:checked:before {
   opacity: 0.16;
 }
-.form-check-input:checked:after {
+.form-check-input:checked:after, input[type=checkbox]:checked:after, form div input[type=radio]:checked:after {
   content: "";
   position: absolute;
 }
-.form-check-input:checked:focus {
+.form-check-input:checked:focus, input[type=checkbox]:checked:focus, form div input[type=radio]:checked:focus {
   border-color: #3b71ca;
 }
-.form-check-input:checked:focus:before {
+.form-check-input:checked:focus:before, input[type=checkbox]:checked:focus:before, form div input[type=radio]:checked:focus:before {
   box-shadow: 0px 0px 0px 13px #3b71ca;
   transform: scale(1);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.form-check-input:indeterminate:focus:before {
+.form-check-input:indeterminate:focus:before, input[type=checkbox]:indeterminate:focus:before, form div input[type=radio]:indeterminate:focus:before {
   box-shadow: 0px 0px 0px 13px #3b71ca;
 }
-.form-check-input[type=checkbox] {
+.form-check-input[type=checkbox], input[type=checkbox], form div input[type=checkbox][type=radio] {
   border-radius: 0.25rem;
   margin-top: 0.19em;
   margin-right: 6px;
 }
-.form-check-input[type=checkbox]:focus:after {
+.form-check-input[type=checkbox]:focus:after, input[type=checkbox]:focus:after {
   content: "";
   position: absolute;
   width: 0.875rem;
@@ -13391,11 +13557,11 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   border-radius: 0;
   background-color: #fff;
 }
-.form-check-input[type=checkbox]:checked {
+.form-check-input[type=checkbox]:checked, input[type=checkbox]:checked {
   background-image: none;
   background-color: #3b71ca;
 }
-.form-check-input[type=checkbox]:checked:after {
+.form-check-input[type=checkbox]:checked:after, input[type=checkbox]:checked:after {
   display: block;
   transform: rotate(45deg) /*!rtl:ignore*/;
   border-width: 0.125rem;
@@ -13409,24 +13575,24 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   margin-top: -1px;
   background-color: transparent;
 }
-.form-check-input[type=checkbox]:checked:focus {
+.form-check-input[type=checkbox]:checked:focus, input[type=checkbox]:checked:focus {
   background-color: #3b71ca;
 }
-.form-check-input[type=checkbox]:indeterminate {
+.form-check-input[type=checkbox]:indeterminate, input[type=checkbox]:indeterminate {
   border-color: #3b71ca;
 }
-.form-check-input[type=radio] {
+.form-check-input[type=radio], input[type=radio][type=checkbox], form div input[type=radio] {
   border-radius: 50%;
   width: 1.25rem;
   height: 1.25rem;
   margin-top: 0.125em;
   margin-right: 4px;
 }
-.form-check-input[type=radio]:before {
+.form-check-input[type=radio]:before, input[type=radio][type=checkbox]:before, form div input[type=radio]:before {
   width: 1rem;
   height: 1rem;
 }
-.form-check-input[type=radio]:after {
+.form-check-input[type=radio]:after, input[type=radio][type=checkbox]:after, form div input[type=radio]:after {
   content: "";
   position: absolute;
   width: 1rem;
@@ -13436,11 +13602,11 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   border-radius: 50%;
   background-color: #fff;
 }
-.form-check-input[type=radio]:checked {
+.form-check-input[type=radio]:checked, input[type=radio][type=checkbox]:checked, form div input[type=radio]:checked {
   background-image: none;
   background-color: #fff;
 }
-.form-check-input[type=radio]:checked:after {
+.form-check-input[type=radio]:checked:after, input[type=radio][type=checkbox]:checked:after, form div input[type=radio]:checked:after {
   border-radius: 50%;
   width: 0.625rem;
   height: 0.625rem;
@@ -13452,7 +13618,7 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   left: 50%;
   top: 50%;
 }
-.form-check-input[type=radio]:checked:focus {
+.form-check-input[type=radio]:checked:focus, input[type=radio][type=checkbox]:checked:focus, form div input[type=radio]:checked:focus {
   background-color: #fff;
 }
 
@@ -13463,7 +13629,7 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   cursor: pointer;
 }
 
-.form-switch .form-check-input {
+.form-switch .form-check-input, .form-switch input[type=checkbox], .form-switch form div input[type=radio], form div .form-switch input[type=radio] {
   background-image: none;
   border-width: 0;
   border-radius: 0.4375rem;
@@ -13473,7 +13639,7 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   margin-top: 0.3em;
   margin-right: 8px;
 }
-.form-switch .form-check-input:after {
+.form-switch .form-check-input:after, .form-switch input[type=checkbox]:after, .form-switch form div input[type=radio]:after, form div .form-switch input[type=radio]:after {
   content: "";
   position: absolute;
   border: none;
@@ -13486,35 +13652,35 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.07), 0 2px 2px 0 rgba(0, 0, 0, 0.04);
   transition: background-color 0.2s, transform 0.2s;
 }
-.form-switch .form-check-input:focus {
+.form-switch .form-check-input:focus, .form-switch input[type=checkbox]:focus, .form-switch form div input[type=radio]:focus, form div .form-switch input[type=radio]:focus {
   background-image: none;
 }
-.form-switch .form-check-input:focus:before {
+.form-switch .form-check-input:focus:before, .form-switch input[type=checkbox]:focus:before, .form-switch form div input[type=radio]:focus:before, form div .form-switch input[type=radio]:focus:before {
   box-shadow: 3px -1px 0px 13px rgba(0, 0, 0, 0.6);
   transform: scale(1);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.form-switch .form-check-input:focus:after {
+.form-switch .form-check-input:focus:after, .form-switch input[type=checkbox]:focus:after, .form-switch form div input[type=radio]:focus:after, form div .form-switch input[type=radio]:focus:after {
   border-radius: 50%;
   width: 1.25rem;
   height: 1.25rem;
 }
-.form-switch .form-check-input:checked {
+.form-switch .form-check-input:checked, .form-switch input[type=checkbox]:checked, .form-switch form div input[type=radio]:checked, form div .form-switch input[type=radio]:checked {
   background-image: none;
 }
-.form-switch .form-check-input:checked:focus {
+.form-switch .form-check-input:checked:focus, .form-switch input[type=checkbox]:checked:focus, .form-switch form div input[type=radio]:checked:focus, form div .form-switch input[type=radio]:checked:focus {
   background-image: none;
 }
-.form-switch .form-check-input:checked:focus:before {
+.form-switch .form-check-input:checked:focus:before, .form-switch input[type=checkbox]:checked:focus:before, .form-switch form div input[type=radio]:checked:focus:before, form div .form-switch input[type=radio]:checked:focus:before {
   margin-left: 1.0625rem;
   box-shadow: 3px -1px 0px 13px #3b71ca;
   transform: scale(1);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.form-switch .form-check-input:checked[type=checkbox] {
+.form-switch .form-check-input:checked[type=checkbox], .form-switch input:checked[type=checkbox] {
   background-image: none;
 }
-.form-switch .form-check-input:checked[type=checkbox]:after {
+.form-switch .form-check-input:checked[type=checkbox]:after, .form-switch input:checked[type=checkbox]:after {
   content: "";
   position: absolute;
   border: none;
@@ -13529,24 +13695,28 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   transition: background-color 0.2s, transform 0.2s;
 }
 
-.form-control[type=file]::-webkit-file-upload-button, input[type=file][type=search]::-webkit-file-upload-button {
+.form-control[type=file]::-webkit-file-upload-button, form div input[type=file][type=search]::-webkit-file-upload-button,
+form div input[type=file][type=text]::-webkit-file-upload-button {
   background-color: transparent;
 }
-.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button, input[type=search]:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button, form div input[type=search]:hover:not(:disabled):not([readonly])::-webkit-file-upload-button,
+form div input[type=text]:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
   background-color: transparent;
 }
 
 .input-group {
   flex-wrap: nowrap;
 }
-.input-group > .form-control, .input-group > input[type=search] {
+.input-group > .form-control, form div .input-group > input[type=search],
+form div .input-group > input[type=text] {
   min-height: calc(2.08rem + 2px);
   height: calc(2.08rem + 2px);
   padding-top: 0.27rem;
   padding-bottom: 0.27rem;
   transition: all 0.2s linear;
 }
-.input-group > .form-control:focus, .input-group > input[type=search]:focus {
+.input-group > .form-control:focus, form div .input-group > input[type=search]:focus,
+form div .input-group > input[type=text]:focus {
   transition: all 0.2s linear;
   border-color: #3b71ca;
   outline: 0;
@@ -13558,15 +13728,16 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   padding-top: 0.26rem;
   padding-bottom: 0.26rem;
 }
-.input-group-text > .form-check-input[type=checkbox] {
+.input-group-text > .form-check-input[type=checkbox], .input-group-text > input[type=checkbox] {
   margin-left: 1px;
   margin-right: 1px;
 }
-.input-group-text > .form-check-input[type=radio] {
+.input-group-text > .form-check-input[type=radio], .input-group-text > input[type=radio][type=checkbox], form div .input-group-text > input[type=radio] {
   margin-right: 0;
 }
 
-.input-group-lg > .form-control, .input-group-lg > input[type=search] {
+.input-group-lg > .form-control, form div .input-group-lg > input[type=search],
+form div .input-group-lg > input[type=text] {
   height: calc(2.645rem + 2px);
   font-size: 1rem;
   padding-top: 0.33rem;
@@ -13576,7 +13747,8 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   font-size: 1rem;
 }
 
-.input-group-sm > .form-control, .input-group-sm > input[type=search] {
+.input-group-sm > .form-control, form div .input-group-sm > input[type=search],
+form div .input-group-sm > input[type=text] {
   min-height: calc(1.66rem + 2px);
   height: calc(1.66rem + 2px);
   font-size: 0.775rem;
@@ -13588,23 +13760,41 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   line-height: 1.5;
 }
 
-.input-group.form-outline .input-group-text {
+.input-group.form-outline .input-group-text, form div input.input-group[type=search] .input-group-text,
+form div input.input-group[type=text] .input-group-text, form div.input-group .input-group-text {
   border-left: 0;
 }
-.input-group.form-outline input + .input-group-text {
+.input-group.form-outline input + .input-group-text, form div input.input-group[type=search] input + .input-group-text,
+form div input.input-group[type=text] input + .input-group-text, form div.input-group input + .input-group-text {
   border: 0;
   border-left: 1px solid #bdbdbd;
 }
-.input-group .form-outline:not(:first-child),
+.input-group .form-outline:not(:first-child), .input-group form div input[type=search]:not(:first-child), form div .input-group input[type=search]:not(:first-child),
+.input-group form div input[type=text]:not(:first-child),
+form div .input-group input[type=text]:not(:first-child), .input-group form div:not(:first-child), form .input-group div:not(:first-child),
 .input-group .select-wrapper:not(:first-child),
 .input-group .form-outline:not(:first-child) .form-notch-leading,
+.input-group form div input[type=search]:not(:first-child) .form-notch-leading,
+form div .input-group input[type=search]:not(:first-child) .form-notch-leading,
+.input-group form div input[type=text]:not(:first-child) .form-notch-leading,
+form div .input-group input[type=text]:not(:first-child) .form-notch-leading,
+.input-group form div:not(:first-child) .form-notch-leading,
+form .input-group div:not(:first-child) .form-notch-leading,
 .input-group .select-wrapper:not(:first-child) .form-notch-leading {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
-.input-group .form-outline:not(:last-child),
+.input-group .form-outline:not(:last-child), .input-group form div input[type=search]:not(:last-child), form div .input-group input[type=search]:not(:last-child),
+.input-group form div input[type=text]:not(:last-child),
+form div .input-group input[type=text]:not(:last-child), .input-group form div:not(:last-child), form .input-group div:not(:last-child),
 .input-group .select-wrapper:not(:last-child),
 .input-group .form-outline:not(:last-child) .form-notch-trailing,
+.input-group form div input[type=search]:not(:last-child) .form-notch-trailing,
+form div .input-group input[type=search]:not(:last-child) .form-notch-trailing,
+.input-group form div input[type=text]:not(:last-child) .form-notch-trailing,
+form div .input-group input[type=text]:not(:last-child) .form-notch-trailing,
+.input-group form div:not(:last-child) .form-notch-trailing,
+form .input-group div:not(:last-child) .form-notch-trailing,
 .input-group .select-wrapper:not(:last-child) .form-notch-trailing {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -13614,11 +13804,11 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   border-left: 0;
 }
 
-.input-group > .btn[class*=btn-outline-], .input-group > input[class*=btn-outline-][type=submit] {
+.input-group > .btn[class*=btn-outline-], form div .input-group > input[class*=btn-outline-][type=submit] {
   padding-top: 0.47rem;
 }
 
-.input-group > .btn, .input-group > input[type=submit] {
+.input-group > .btn, form div .input-group > input[type=submit] {
   padding-top: 0.59rem;
 }
 
@@ -13629,7 +13819,7 @@ i.flag-zw:before, i.flag-zimbabwe:before {
 .input-group .input-group-text {
   height: calc(2.08rem + 2px);
 }
-.input-group .btn, .input-group input[type=submit] {
+.input-group .btn, .input-group form div input[type=submit], form div .input-group input[type=submit] {
   line-height: 1;
 }
 
@@ -13678,50 +13868,166 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   display: block;
 }
 
-.was-validated .form-control:valid, .was-validated input[type=search]:valid, .form-control.is-valid, input.is-valid[type=search] {
+.was-validated .form-control:valid, .was-validated form div input[type=search]:valid, form div .was-validated input[type=search]:valid,
+.was-validated form div input[type=text]:valid,
+form div .was-validated input[type=text]:valid, .form-control.is-valid, form div input.is-valid[type=search],
+form div input.is-valid[type=text] {
   margin-bottom: 1rem;
   background-image: none;
   border-color: #14a44d;
 }
-.was-validated .form-control:valid:focus, .was-validated input[type=search]:valid:focus, .form-control.is-valid:focus, input.is-valid[type=search]:focus {
+.was-validated .form-control:valid:focus, .was-validated form div input[type=search]:valid:focus, form div .was-validated input[type=search]:valid:focus,
+.was-validated form div input[type=text]:valid:focus,
+form div .was-validated input[type=text]:valid:focus, .form-control.is-valid:focus, form div input.is-valid[type=search]:focus,
+form div input.is-valid[type=text]:focus {
   border-color: #14a44d;
   box-shadow: 0 0 0 0.25rem rgba(20, 164, 77, 0.25);
 }
 
-.was-validated .form-outline .form-control:valid ~ .form-label, .was-validated .form-outline input[type=search]:valid ~ .form-label, .form-outline .form-control.is-valid ~ .form-label, .form-outline input.is-valid[type=search] ~ .form-label {
+.was-validated .form-outline .form-control:valid ~ .form-label, form div .was-validated .form-outline input[type=search]:valid ~ .form-label,
+form div .was-validated .form-outline input[type=text]:valid ~ .form-label, form div .was-validated input[type=search] .form-control:valid ~ .form-label, form div .was-validated input[type=search] input[type=search]:valid ~ .form-label,
+form div .was-validated input[type=search] input[type=text]:valid ~ .form-label,
+form div .was-validated input[type=text] .form-control:valid ~ .form-label,
+form div .was-validated input[type=text] input[type=search]:valid ~ .form-label,
+form div .was-validated input[type=text] input[type=text]:valid ~ .form-label, .was-validated form div .form-control:valid ~ .form-label, .was-validated form div input[type=search]:valid ~ .form-label,
+.was-validated form div input[type=text]:valid ~ .form-label, form .was-validated div .form-control:valid ~ .form-label, form .was-validated div input[type=search]:valid ~ .form-label,
+form .was-validated div input[type=text]:valid ~ .form-label, .form-outline .form-control.is-valid ~ .form-label, form div .form-control.is-valid ~ .form-label, form div input.is-valid[type=search] ~ .form-label,
+form div input.is-valid[type=text] ~ .form-label {
   color: #14a44d;
 }
-.was-validated .form-outline .form-control:valid ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-leading,
+.was-validated .form-outline .form-control:valid ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:valid ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:valid ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:valid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:valid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:valid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:valid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:valid ~ .form-notch .form-notch-leading, .was-validated form div .form-control:valid ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:valid ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:valid ~ .form-notch .form-notch-leading, form .was-validated div .form-control:valid ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:valid ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:valid ~ .form-notch .form-notch-leading,
 .was-validated .form-outline .form-control:valid ~ .form-notch .form-notch-middle,
-.was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] .form-control:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=search]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:valid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:valid ~ .form-notch .form-notch-middle,
+.was-validated form div .form-control:valid ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=search]:valid ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:valid ~ .form-notch .form-notch-middle,
+form .was-validated div .form-control:valid ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=search]:valid ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:valid ~ .form-notch .form-notch-middle,
 .was-validated .form-outline .form-control:valid ~ .form-notch .form-notch-trailing,
-.was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid ~ .form-notch .form-notch-leading, .form-outline input.is-valid[type=search] ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=search]:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] .form-control:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=search]:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:valid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:valid ~ .form-notch .form-notch-trailing,
+.was-validated form div .form-control:valid ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=search]:valid ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:valid ~ .form-notch .form-notch-trailing,
+form .was-validated div .form-control:valid ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=search]:valid ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:valid ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid ~ .form-notch .form-notch-leading, form div .form-control.is-valid ~ .form-notch .form-notch-leading, form div input.is-valid[type=search] ~ .form-notch .form-notch-leading,
+form div input.is-valid[type=text] ~ .form-notch .form-notch-leading,
 .form-outline .form-control.is-valid ~ .form-notch .form-notch-middle,
-.form-outline input.is-valid[type=search] ~ .form-notch .form-notch-middle,
+form div .form-control.is-valid ~ .form-notch .form-notch-middle,
+form div input.is-valid[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-valid[type=text] ~ .form-notch .form-notch-middle,
 .form-outline .form-control.is-valid ~ .form-notch .form-notch-trailing,
-.form-outline input.is-valid[type=search] ~ .form-notch .form-notch-trailing {
+form div .form-control.is-valid ~ .form-notch .form-notch-trailing,
+form div input.is-valid[type=search] ~ .form-notch .form-notch-trailing,
+form div input.is-valid[type=text] ~ .form-notch .form-notch-trailing {
   border-color: #14a44d;
 }
-.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline .form-control:valid.active ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:valid.active ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-middle, .form-outline input.is-valid[type=search]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid.active ~ .form-notch .form-notch-middle, .form-outline input.is-valid.active[type=search] ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:valid:focus ~ .form-notch .form-notch-middle, .was-validated form div .form-control:valid:focus ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:valid:focus ~ .form-notch .form-notch-middle, form .was-validated div .form-control:valid:focus ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:valid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline .form-control:valid.active ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:valid.active ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:valid.active ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:valid.active ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:valid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:valid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:valid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:valid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:valid.active ~ .form-notch .form-notch-middle, .was-validated form div .form-control:valid.active ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:valid.active ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:valid.active ~ .form-notch .form-notch-middle, form .was-validated div .form-control:valid.active ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:valid.active ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:valid.active ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-middle, form div .form-control.is-valid:focus ~ .form-notch .form-notch-middle, form div input.is-valid[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.is-valid[type=text]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid.active ~ .form-notch .form-notch-middle, form div .form-control.is-valid.active ~ .form-notch .form-notch-middle, form div input.is-valid.active[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-valid.active[type=text] ~ .form-notch .form-notch-middle {
   border-top: 1px solid transparent;
 }
-.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-middle, .form-outline input.is-valid[type=search]:focus ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:valid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:valid:focus ~ .form-notch .form-notch-middle, .was-validated form div .form-control:valid:focus ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:valid:focus ~ .form-notch .form-notch-middle, form .was-validated div .form-control:valid:focus ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:valid:focus ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:valid:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-middle, form div .form-control.is-valid:focus ~ .form-notch .form-notch-middle, form div input.is-valid[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.is-valid[type=text]:focus ~ .form-notch .form-notch-middle {
   box-shadow: 0 1px 0 0 #14a44d;
 }
-.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-leading, .form-outline input.is-valid[type=search]:focus ~ .form-notch .form-notch-leading {
+.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:valid:focus ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:valid:focus ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:valid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:valid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:valid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:valid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:valid:focus ~ .form-notch .form-notch-leading, .was-validated form div .form-control:valid:focus ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:valid:focus ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:valid:focus ~ .form-notch .form-notch-leading, form .was-validated div .form-control:valid:focus ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:valid:focus ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:valid:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-leading, form div .form-control.is-valid:focus ~ .form-notch .form-notch-leading, form div input.is-valid[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input.is-valid[type=text]:focus ~ .form-notch .form-notch-leading {
   box-shadow: -1px 0 0 0 #14a44d, 0 1px 0 0 #14a44d, 0 -1px 0 0 #14a44d;
 }
-.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-trailing, .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-trailing, .form-outline input.is-valid[type=search]:focus ~ .form-notch .form-notch-trailing {
+.was-validated .form-outline .form-control:valid:focus ~ .form-notch .form-notch-trailing, form div .was-validated .form-outline input[type=search]:valid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:valid:focus ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] .form-control:valid:focus ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] input[type=search]:valid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:valid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:valid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:valid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:valid:focus ~ .form-notch .form-notch-trailing, .was-validated form div .form-control:valid:focus ~ .form-notch .form-notch-trailing, .was-validated form div input[type=search]:valid:focus ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:valid:focus ~ .form-notch .form-notch-trailing, form .was-validated div .form-control:valid:focus ~ .form-notch .form-notch-trailing, form .was-validated div input[type=search]:valid:focus ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:valid:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid:focus ~ .form-notch .form-notch-trailing, form div .form-control.is-valid:focus ~ .form-notch .form-notch-trailing, form div input.is-valid[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input.is-valid[type=text]:focus ~ .form-notch .form-notch-trailing {
   box-shadow: 1px 0 0 0 #14a44d, 0 -1px 0 0 #14a44d, 0 1px 0 0 #14a44d;
 }
-.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-leading {
+.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated form div .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-leading, form .was-validated div .form-control:valid.select-input.focused ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-leading, form div .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-leading, form div input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-leading,
+form div input.is-valid.select-input.focused[type=text] ~ .form-notch .form-notch-leading {
   box-shadow: -1px 0 0 0 #14a44d, 0 1px 0 0 #14a44d, 0 -1px 0 0 #14a44d;
 }
-.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated form div .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-middle, form .was-validated div .form-control:valid.select-input.focused ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-middle, form div .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-middle, form div input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-valid.select-input.focused[type=text] ~ .form-notch .form-notch-middle {
   box-shadow: 0 1px 0 0 #14a44d;
   border-top: 1px solid transparent;
 }
-.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-trailing {
+.was-validated .form-outline .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated .form-outline input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated form div .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated form div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-trailing, form .was-validated div .form-control:valid.select-input.focused ~ .form-notch .form-notch-trailing, form .was-validated div input[type=search]:valid.select-input.focused ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:valid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-trailing, form div .form-control.is-valid.select-input.focused ~ .form-notch .form-notch-trailing, form div input.is-valid.select-input.focused[type=search] ~ .form-notch .form-notch-trailing,
+form div input.is-valid.select-input.focused[type=text] ~ .form-notch .form-notch-trailing {
   box-shadow: 1px 0 0 0 #14a44d, 0 -1px 0 0 #14a44d, 0 1px 0 0 #14a44d;
 }
 
@@ -13736,75 +14042,95 @@ i.flag-zw:before, i.flag-zimbabwe:before {
   margin-top: 0;
 }
 
-.was-validated .input-group .form-control:valid, .was-validated .input-group input[type=search]:valid, .input-group .form-control.is-valid, .input-group input.is-valid[type=search] {
+.was-validated .input-group .form-control:valid, .was-validated .input-group form div input[type=search]:valid, form div .was-validated .input-group input[type=search]:valid,
+.was-validated .input-group form div input[type=text]:valid,
+form div .was-validated .input-group input[type=text]:valid, .input-group .form-control.is-valid, .input-group form div input.is-valid[type=search], form div .input-group input.is-valid[type=search],
+.input-group form div input.is-valid[type=text],
+form div .input-group input.is-valid[type=text] {
   margin-bottom: 0;
 }
 
-.was-validated input[type=file].form-control:valid .valid-feedback, .was-validated input[type=file][type=search]:valid .valid-feedback, input[type=file].form-control.is-valid .valid-feedback, input[type=file].is-valid[type=search] .valid-feedback {
+.was-validated input[type=file].form-control:valid .valid-feedback, .was-validated form div input[type=file][type=search]:valid .valid-feedback, form div .was-validated input[type=file][type=search]:valid .valid-feedback,
+.was-validated form div input[type=file][type=text]:valid .valid-feedback,
+form div .was-validated input[type=file][type=text]:valid .valid-feedback, input[type=file].form-control.is-valid .valid-feedback, form div input[type=file].is-valid[type=search] .valid-feedback,
+form div input[type=file].is-valid[type=text] .valid-feedback {
   margin-top: 0;
 }
-.was-validated input[type=file].form-control:valid:focus, .was-validated input[type=file][type=search]:valid:focus, input[type=file].form-control.is-valid:focus, input[type=file].is-valid[type=search]:focus {
+.was-validated input[type=file].form-control:valid:focus, .was-validated form div input[type=file][type=search]:valid:focus, form div .was-validated input[type=file][type=search]:valid:focus,
+.was-validated form div input[type=file][type=text]:valid:focus,
+form div .was-validated input[type=file][type=text]:valid:focus, input[type=file].form-control.is-valid:focus, form div input[type=file].is-valid[type=search]:focus,
+form div input[type=file].is-valid[type=text]:focus {
   box-shadow: inset 0 0 0 1px #14a44d;
   border-color: #14a44d;
 }
-.was-validated input[type=file].form-control:valid:focus ~ .form-file-label, .was-validated input[type=file][type=search]:valid:focus ~ .form-file-label, input[type=file].form-control.is-valid:focus ~ .form-file-label, input[type=file].is-valid[type=search]:focus ~ .form-file-label {
+.was-validated input[type=file].form-control:valid:focus ~ .form-file-label, .was-validated form div input[type=file][type=search]:valid:focus ~ .form-file-label, form div .was-validated input[type=file][type=search]:valid:focus ~ .form-file-label,
+.was-validated form div input[type=file][type=text]:valid:focus ~ .form-file-label,
+form div .was-validated input[type=file][type=text]:valid:focus ~ .form-file-label, input[type=file].form-control.is-valid:focus ~ .form-file-label, form div input[type=file].is-valid[type=search]:focus ~ .form-file-label,
+form div input[type=file].is-valid[type=text]:focus ~ .form-file-label {
   box-shadow: none;
 }
-.was-validated input[type=file].form-control:valid:focus-within ~ .form-file-label .form-file-text, .was-validated input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-text,
+.was-validated input[type=file].form-control:valid:focus-within ~ .form-file-label .form-file-text, .was-validated form div input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-text, form div .was-validated input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-text,
+.was-validated form div input[type=file][type=text]:valid:focus-within ~ .form-file-label .form-file-text,
+form div .was-validated input[type=file][type=text]:valid:focus-within ~ .form-file-label .form-file-text,
 .was-validated input[type=file].form-control:valid:focus-within ~ .form-file-label .form-file-button,
-.was-validated input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-button, input[type=file].form-control.is-valid:focus-within ~ .form-file-label .form-file-text, input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-file-text,
+.was-validated form div input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-button,
+form div .was-validated input[type=file][type=search]:valid:focus-within ~ .form-file-label .form-file-button,
+.was-validated form div input[type=file][type=text]:valid:focus-within ~ .form-file-label .form-file-button,
+form div .was-validated input[type=file][type=text]:valid:focus-within ~ .form-file-label .form-file-button, input[type=file].form-control.is-valid:focus-within ~ .form-file-label .form-file-text, form div input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-file-text,
+form div input[type=file].is-valid[type=text]:focus-within ~ .form-file-label .form-file-text,
 input[type=file].form-control.is-valid:focus-within ~ .form-file-label .form-file-button,
-input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-file-button {
+form div input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-file-button,
+form div input[type=file].is-valid[type=text]:focus-within ~ .form-file-label .form-file-button {
   border-color: #14a44d;
 }
 
-.was-validated .form-check-input:valid, .form-check-input.is-valid {
+.was-validated .form-check-input:valid, .was-validated input[type=checkbox]:valid, .was-validated form div input[type=radio]:valid, form div .was-validated input[type=radio]:valid, .form-check-input.is-valid, input.is-valid[type=checkbox], form div input.is-valid[type=radio] {
   border-color: #14a44d;
 }
-.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked {
+.was-validated .form-check-input:valid:checked, .was-validated input[type=checkbox]:valid:checked, .was-validated form div input[type=radio]:valid:checked, form div .was-validated input[type=radio]:valid:checked, .form-check-input.is-valid:checked, input.is-valid[type=checkbox]:checked, form div input.is-valid[type=radio]:checked {
   background-color: #14a44d;
 }
-.was-validated .form-check-input:valid:checked:focus:before, .form-check-input.is-valid:checked:focus:before {
+.was-validated .form-check-input:valid:checked:focus:before, .was-validated input[type=checkbox]:valid:checked:focus:before, .was-validated form div input[type=radio]:valid:checked:focus:before, form div .was-validated input[type=radio]:valid:checked:focus:before, .form-check-input.is-valid:checked:focus:before, input.is-valid[type=checkbox]:checked:focus:before, form div input.is-valid[type=radio]:checked:focus:before {
   box-shadow: 0px 0px 0px 13px #14a44d;
 }
-.was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
+.was-validated .form-check-input:valid:focus, .was-validated input[type=checkbox]:valid:focus, .was-validated form div input[type=radio]:valid:focus, form div .was-validated input[type=radio]:valid:focus, .form-check-input.is-valid:focus, input.is-valid[type=checkbox]:focus, form div input.is-valid[type=radio]:focus {
   box-shadow: none;
 }
-.was-validated .form-check-input:valid:focus:before, .form-check-input.is-valid:focus:before {
+.was-validated .form-check-input:valid:focus:before, .was-validated input[type=checkbox]:valid:focus:before, .was-validated form div input[type=radio]:valid:focus:before, form div .was-validated input[type=radio]:valid:focus:before, .form-check-input.is-valid:focus:before, input.is-valid[type=checkbox]:focus:before, form div input.is-valid[type=radio]:focus:before {
   box-shadow: 0px 0px 0px 13px #14a44d;
 }
-.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+.was-validated .form-check-input:valid ~ .form-check-label, .was-validated input[type=checkbox]:valid ~ .form-check-label, .was-validated form div input[type=radio]:valid ~ .form-check-label, form div .was-validated input[type=radio]:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label, input.is-valid[type=checkbox] ~ .form-check-label, form div input.is-valid[type=radio] ~ .form-check-label {
   color: #14a44d;
   margin-bottom: 1rem;
 }
-.was-validated .form-check-input:valid[type=checkbox]:checked:focus, .form-check-input.is-valid[type=checkbox]:checked:focus {
+.was-validated .form-check-input:valid[type=checkbox]:checked:focus, .was-validated input:valid[type=checkbox]:checked:focus, .form-check-input.is-valid[type=checkbox]:checked:focus, input.is-valid[type=checkbox]:checked:focus {
   background-color: #14a44d;
   border-color: #14a44d;
 }
-.was-validated .form-check-input:valid[type=radio]:checked, .form-check-input.is-valid[type=radio]:checked {
+.was-validated .form-check-input:valid[type=radio]:checked, .was-validated input[type=checkbox]:valid[type=radio]:checked, .was-validated form div input:valid[type=radio]:checked, form div .was-validated input:valid[type=radio]:checked, .form-check-input.is-valid[type=radio]:checked, input.is-valid[type=radio][type=checkbox]:checked, form div input.is-valid[type=radio]:checked {
   border-color: #14a44d;
   background-color: #fff;
 }
-.was-validated .form-check-input:valid[type=radio]:checked:focus:before, .form-check-input.is-valid[type=radio]:checked:focus:before {
+.was-validated .form-check-input:valid[type=radio]:checked:focus:before, .was-validated input[type=checkbox]:valid[type=radio]:checked:focus:before, .was-validated form div input:valid[type=radio]:checked:focus:before, form div .was-validated input:valid[type=radio]:checked:focus:before, .form-check-input.is-valid[type=radio]:checked:focus:before, input.is-valid[type=radio][type=checkbox]:checked:focus:before, form div input.is-valid[type=radio]:checked:focus:before {
   box-shadow: 0px 0px 0px 13px #14a44d;
 }
-.was-validated .form-check-input:valid[type=radio]:checked:after, .form-check-input.is-valid[type=radio]:checked:after {
+.was-validated .form-check-input:valid[type=radio]:checked:after, .was-validated input[type=checkbox]:valid[type=radio]:checked:after, .was-validated form div input:valid[type=radio]:checked:after, form div .was-validated input:valid[type=radio]:checked:after, .form-check-input.is-valid[type=radio]:checked:after, input.is-valid[type=radio][type=checkbox]:checked:after, form div input.is-valid[type=radio]:checked:after {
   border-color: #14a44d;
   background-color: #14a44d;
 }
 
-.form-check-inline .form-check-input ~ .valid-feedback {
+.form-check-inline .form-check-input ~ .valid-feedback, .form-check-inline input[type=checkbox] ~ .valid-feedback, .form-check-inline form div input[type=radio] ~ .valid-feedback, form div .form-check-inline input[type=radio] ~ .valid-feedback {
   margin-left: 0.5em;
 }
 
-.was-validated .form-switch .form-check-input:valid:focus:before, .form-switch .form-check-input.is-valid:focus:before {
+.was-validated .form-switch .form-check-input:valid:focus:before, .was-validated .form-switch input[type=checkbox]:valid:focus:before, .was-validated .form-switch form div input[type=radio]:valid:focus:before, form div .was-validated .form-switch input[type=radio]:valid:focus:before, .form-switch .form-check-input.is-valid:focus:before, .form-switch input.is-valid[type=checkbox]:focus:before, .form-switch form div input.is-valid[type=radio]:focus:before, form div .form-switch input.is-valid[type=radio]:focus:before {
   box-shadow: 3px -1px 0px 13px rgba(0, 0, 0, 0.6);
 }
-.was-validated .form-switch .form-check-input:valid:checked[type=checkbox]:after, .form-switch .form-check-input.is-valid:checked[type=checkbox]:after {
+.was-validated .form-switch .form-check-input:valid:checked[type=checkbox]:after, .was-validated .form-switch input:valid:checked[type=checkbox]:after, .form-switch .form-check-input.is-valid:checked[type=checkbox]:after, .form-switch input.is-valid:checked[type=checkbox]:after {
   background-color: #14a44d;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-.was-validated .form-switch .form-check-input:valid:checked:focus:before, .form-switch .form-check-input.is-valid:checked:focus:before {
+.was-validated .form-switch .form-check-input:valid:checked:focus:before, .was-validated .form-switch input[type=checkbox]:valid:checked:focus:before, .was-validated .form-switch form div input[type=radio]:valid:checked:focus:before, form div .was-validated .form-switch input[type=radio]:valid:checked:focus:before, .form-switch .form-check-input.is-valid:checked:focus:before, .form-switch input.is-valid[type=checkbox]:checked:focus:before, .form-switch form div input.is-valid[type=radio]:checked:focus:before, form div .form-switch input.is-valid[type=radio]:checked:focus:before {
   box-shadow: 3px -1px 0px 13px #14a44d;
 }
 
@@ -13839,50 +14165,166 @@ input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-fil
   display: block;
 }
 
-.was-validated .form-control:invalid, .was-validated input[type=search]:invalid, .form-control.is-invalid, input.is-invalid[type=search] {
+.was-validated .form-control:invalid, .was-validated form div input[type=search]:invalid, form div .was-validated input[type=search]:invalid,
+.was-validated form div input[type=text]:invalid,
+form div .was-validated input[type=text]:invalid, .form-control.is-invalid, form div input.is-invalid[type=search],
+form div input.is-invalid[type=text] {
   margin-bottom: 1rem;
   background-image: none;
   border-color: #dc4c64;
 }
-.was-validated .form-control:invalid:focus, .was-validated input[type=search]:invalid:focus, .form-control.is-invalid:focus, input.is-invalid[type=search]:focus {
+.was-validated .form-control:invalid:focus, .was-validated form div input[type=search]:invalid:focus, form div .was-validated input[type=search]:invalid:focus,
+.was-validated form div input[type=text]:invalid:focus,
+form div .was-validated input[type=text]:invalid:focus, .form-control.is-invalid:focus, form div input.is-invalid[type=search]:focus,
+form div input.is-invalid[type=text]:focus {
   border-color: #dc4c64;
   box-shadow: 0 0 0 0.25rem rgba(220, 76, 100, 0.25);
 }
 
-.was-validated .form-outline .form-control:invalid ~ .form-label, .was-validated .form-outline input[type=search]:invalid ~ .form-label, .form-outline .form-control.is-invalid ~ .form-label, .form-outline input.is-invalid[type=search] ~ .form-label {
+.was-validated .form-outline .form-control:invalid ~ .form-label, form div .was-validated .form-outline input[type=search]:invalid ~ .form-label,
+form div .was-validated .form-outline input[type=text]:invalid ~ .form-label, form div .was-validated input[type=search] .form-control:invalid ~ .form-label, form div .was-validated input[type=search] input[type=search]:invalid ~ .form-label,
+form div .was-validated input[type=search] input[type=text]:invalid ~ .form-label,
+form div .was-validated input[type=text] .form-control:invalid ~ .form-label,
+form div .was-validated input[type=text] input[type=search]:invalid ~ .form-label,
+form div .was-validated input[type=text] input[type=text]:invalid ~ .form-label, .was-validated form div .form-control:invalid ~ .form-label, .was-validated form div input[type=search]:invalid ~ .form-label,
+.was-validated form div input[type=text]:invalid ~ .form-label, form .was-validated div .form-control:invalid ~ .form-label, form .was-validated div input[type=search]:invalid ~ .form-label,
+form .was-validated div input[type=text]:invalid ~ .form-label, .form-outline .form-control.is-invalid ~ .form-label, form div .form-control.is-invalid ~ .form-label, form div input.is-invalid[type=search] ~ .form-label,
+form div input.is-invalid[type=text] ~ .form-label {
   color: #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-leading,
+.was-validated .form-outline .form-control:invalid ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:invalid ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:invalid ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:invalid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:invalid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:invalid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:invalid ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:invalid ~ .form-notch .form-notch-leading, .was-validated form div .form-control:invalid ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:invalid ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:invalid ~ .form-notch .form-notch-leading, form .was-validated div .form-control:invalid ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:invalid ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:invalid ~ .form-notch .form-notch-leading,
 .was-validated .form-outline .form-control:invalid ~ .form-notch .form-notch-middle,
-.was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] .form-control:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=search]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:invalid ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:invalid ~ .form-notch .form-notch-middle,
+.was-validated form div .form-control:invalid ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=search]:invalid ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:invalid ~ .form-notch .form-notch-middle,
+form .was-validated div .form-control:invalid ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=search]:invalid ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:invalid ~ .form-notch .form-notch-middle,
 .was-validated .form-outline .form-control:invalid ~ .form-notch .form-notch-trailing,
-.was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid ~ .form-notch .form-notch-leading, .form-outline input.is-invalid[type=search] ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=search]:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] .form-control:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=search]:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:invalid ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:invalid ~ .form-notch .form-notch-trailing,
+.was-validated form div .form-control:invalid ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=search]:invalid ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:invalid ~ .form-notch .form-notch-trailing,
+form .was-validated div .form-control:invalid ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=search]:invalid ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:invalid ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid ~ .form-notch .form-notch-leading, form div .form-control.is-invalid ~ .form-notch .form-notch-leading, form div input.is-invalid[type=search] ~ .form-notch .form-notch-leading,
+form div input.is-invalid[type=text] ~ .form-notch .form-notch-leading,
 .form-outline .form-control.is-invalid ~ .form-notch .form-notch-middle,
-.form-outline input.is-invalid[type=search] ~ .form-notch .form-notch-middle,
+form div .form-control.is-invalid ~ .form-notch .form-notch-middle,
+form div input.is-invalid[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-invalid[type=text] ~ .form-notch .form-notch-middle,
 .form-outline .form-control.is-invalid ~ .form-notch .form-notch-trailing,
-.form-outline input.is-invalid[type=search] ~ .form-notch .form-notch-trailing {
+form div .form-control.is-invalid ~ .form-notch .form-notch-trailing,
+form div input.is-invalid[type=search] ~ .form-notch .form-notch-trailing,
+form div input.is-invalid[type=text] ~ .form-notch .form-notch-trailing {
   border-color: #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline .form-control:invalid.active ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:invalid.active ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, .form-outline input.is-invalid[type=search]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid.active ~ .form-notch .form-notch-middle, .form-outline input.is-invalid.active[type=search] ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, .was-validated form div .form-control:invalid:focus ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, form .was-validated div .form-control:invalid:focus ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline .form-control:invalid.active ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:invalid.active ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:invalid.active ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:invalid.active ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:invalid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:invalid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:invalid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:invalid.active ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:invalid.active ~ .form-notch .form-notch-middle, .was-validated form div .form-control:invalid.active ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:invalid.active ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:invalid.active ~ .form-notch .form-notch-middle, form .was-validated div .form-control:invalid.active ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:invalid.active ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:invalid.active ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, form div .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, form div input.is-invalid[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.is-invalid[type=text]:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid.active ~ .form-notch .form-notch-middle, form div .form-control.is-invalid.active ~ .form-notch .form-notch-middle, form div input.is-invalid.active[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-invalid.active[type=text] ~ .form-notch .form-notch-middle {
   border-top: 1px solid transparent;
 }
-.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, .form-outline input.is-invalid[type=search]:focus ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:invalid:focus ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, .was-validated form div .form-control:invalid:focus ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, form .was-validated div .form-control:invalid:focus ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:invalid:focus ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:invalid:focus ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, form div .form-control.is-invalid:focus ~ .form-notch .form-notch-middle, form div input.is-invalid[type=search]:focus ~ .form-notch .form-notch-middle,
+form div input.is-invalid[type=text]:focus ~ .form-notch .form-notch-middle {
   box-shadow: 0 1px 0 0 #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-leading, .form-outline input.is-invalid[type=search]:focus ~ .form-notch .form-notch-leading {
+.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:invalid:focus ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:invalid:focus ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:invalid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:invalid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:invalid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:invalid:focus ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:invalid:focus ~ .form-notch .form-notch-leading, .was-validated form div .form-control:invalid:focus ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:invalid:focus ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:invalid:focus ~ .form-notch .form-notch-leading, form .was-validated div .form-control:invalid:focus ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:invalid:focus ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:invalid:focus ~ .form-notch .form-notch-leading, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-leading, form div .form-control.is-invalid:focus ~ .form-notch .form-notch-leading, form div input.is-invalid[type=search]:focus ~ .form-notch .form-notch-leading,
+form div input.is-invalid[type=text]:focus ~ .form-notch .form-notch-leading {
   box-shadow: -1px 0 0 0 #dc4c64, 0 1px 0 0 #dc4c64, 0 -1px 0 0 #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-trailing, .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-trailing, .form-outline input.is-invalid[type=search]:focus ~ .form-notch .form-notch-trailing {
+.was-validated .form-outline .form-control:invalid:focus ~ .form-notch .form-notch-trailing, form div .was-validated .form-outline input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:invalid:focus ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] .form-control:invalid:focus ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:invalid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:invalid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:invalid:focus ~ .form-notch .form-notch-trailing, .was-validated form div .form-control:invalid:focus ~ .form-notch .form-notch-trailing, .was-validated form div input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:invalid:focus ~ .form-notch .form-notch-trailing, form .was-validated div .form-control:invalid:focus ~ .form-notch .form-notch-trailing, form .was-validated div input[type=search]:invalid:focus ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:invalid:focus ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid:focus ~ .form-notch .form-notch-trailing, form div .form-control.is-invalid:focus ~ .form-notch .form-notch-trailing, form div input.is-invalid[type=search]:focus ~ .form-notch .form-notch-trailing,
+form div input.is-invalid[type=text]:focus ~ .form-notch .form-notch-trailing {
   box-shadow: 1px 0 0 0 #dc4c64, 0 -1px 0 0 #dc4c64, 0 1px 0 0 #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-leading {
+.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated .form-outline input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading, form div .was-validated input[type=search] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=search] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form div .was-validated input[type=text] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated form div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading, .was-validated form div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+.was-validated form div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-leading, form .was-validated div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-leading, form .was-validated div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-leading,
+form .was-validated div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-leading, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-leading, form div .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-leading, form div input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-leading,
+form div input.is-invalid.select-input.focused[type=text] ~ .form-notch .form-notch-leading {
   box-shadow: -1px 0 0 0 #dc4c64, 0 1px 0 0 #dc4c64, 0 -1px 0 0 #dc4c64;
 }
-.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-middle {
+.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated .form-outline input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle, form div .was-validated input[type=search] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=search] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form div .was-validated input[type=text] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated form div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle, .was-validated form div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+.was-validated form div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-middle, form .was-validated div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-middle, form .was-validated div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-middle,
+form .was-validated div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-middle, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-middle, form div .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-middle, form div input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-middle,
+form div input.is-invalid.select-input.focused[type=text] ~ .form-notch .form-notch-middle {
   box-shadow: 0 1px 0 0 #dc4c64;
   border-top: 1px solid transparent;
 }
-.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-trailing {
+.was-validated .form-outline .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated .form-outline input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated .form-outline input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing, form div .was-validated input[type=search] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=search] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form div .was-validated input[type=text] input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated form div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing, .was-validated form div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+.was-validated form div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-trailing, form .was-validated div .form-control:invalid.select-input.focused ~ .form-notch .form-notch-trailing, form .was-validated div input[type=search]:invalid.select-input.focused ~ .form-notch .form-notch-trailing,
+form .was-validated div input[type=text]:invalid.select-input.focused ~ .form-notch .form-notch-trailing, .form-outline .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-trailing, form div .form-control.is-invalid.select-input.focused ~ .form-notch .form-notch-trailing, form div input.is-invalid.select-input.focused[type=search] ~ .form-notch .form-notch-trailing,
+form div input.is-invalid.select-input.focused[type=text] ~ .form-notch .form-notch-trailing {
   box-shadow: 1px 0 0 0 #dc4c64, 0 -1px 0 0 #dc4c64, 0 1px 0 0 #dc4c64;
 }
 
@@ -13897,75 +14339,95 @@ input[type=file].is-valid[type=search]:focus-within ~ .form-file-label .form-fil
   margin-top: 0;
 }
 
-.was-validated .input-group .form-control:invalid, .was-validated .input-group input[type=search]:invalid, .input-group .form-control.is-invalid, .input-group input.is-invalid[type=search] {
+.was-validated .input-group .form-control:invalid, .was-validated .input-group form div input[type=search]:invalid, form div .was-validated .input-group input[type=search]:invalid,
+.was-validated .input-group form div input[type=text]:invalid,
+form div .was-validated .input-group input[type=text]:invalid, .input-group .form-control.is-invalid, .input-group form div input.is-invalid[type=search], form div .input-group input.is-invalid[type=search],
+.input-group form div input.is-invalid[type=text],
+form div .input-group input.is-invalid[type=text] {
   margin-bottom: 0;
 }
 
-.was-validated input[type=file].form-control:invalid .invalid-feedback, .was-validated input[type=file][type=search]:invalid .invalid-feedback, input[type=file].form-control.is-invalid .invalid-feedback, input[type=file].is-invalid[type=search] .invalid-feedback {
+.was-validated input[type=file].form-control:invalid .invalid-feedback, .was-validated form div input[type=file][type=search]:invalid .invalid-feedback, form div .was-validated input[type=file][type=search]:invalid .invalid-feedback,
+.was-validated form div input[type=file][type=text]:invalid .invalid-feedback,
+form div .was-validated input[type=file][type=text]:invalid .invalid-feedback, input[type=file].form-control.is-invalid .invalid-feedback, form div input[type=file].is-invalid[type=search] .invalid-feedback,
+form div input[type=file].is-invalid[type=text] .invalid-feedback {
   margin-top: 0;
 }
-.was-validated input[type=file].form-control:invalid:focus, .was-validated input[type=file][type=search]:invalid:focus, input[type=file].form-control.is-invalid:focus, input[type=file].is-invalid[type=search]:focus {
+.was-validated input[type=file].form-control:invalid:focus, .was-validated form div input[type=file][type=search]:invalid:focus, form div .was-validated input[type=file][type=search]:invalid:focus,
+.was-validated form div input[type=file][type=text]:invalid:focus,
+form div .was-validated input[type=file][type=text]:invalid:focus, input[type=file].form-control.is-invalid:focus, form div input[type=file].is-invalid[type=search]:focus,
+form div input[type=file].is-invalid[type=text]:focus {
   box-shadow: inset 0 0 0 1px #dc4c64;
   border-color: #dc4c64;
 }
-.was-validated input[type=file].form-control:invalid:focus ~ .form-file-label, .was-validated input[type=file][type=search]:invalid:focus ~ .form-file-label, input[type=file].form-control.is-invalid:focus ~ .form-file-label, input[type=file].is-invalid[type=search]:focus ~ .form-file-label {
+.was-validated input[type=file].form-control:invalid:focus ~ .form-file-label, .was-validated form div input[type=file][type=search]:invalid:focus ~ .form-file-label, form div .was-validated input[type=file][type=search]:invalid:focus ~ .form-file-label,
+.was-validated form div input[type=file][type=text]:invalid:focus ~ .form-file-label,
+form div .was-validated input[type=file][type=text]:invalid:focus ~ .form-file-label, input[type=file].form-control.is-invalid:focus ~ .form-file-label, form div input[type=file].is-invalid[type=search]:focus ~ .form-file-label,
+form div input[type=file].is-invalid[type=text]:focus ~ .form-file-label {
   box-shadow: none;
 }
-.was-validated input[type=file].form-control:invalid:focus-within ~ .form-file-label .form-file-text, .was-validated input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-text,
+.was-validated input[type=file].form-control:invalid:focus-within ~ .form-file-label .form-file-text, .was-validated form div input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-text, form div .was-validated input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-text,
+.was-validated form div input[type=file][type=text]:invalid:focus-within ~ .form-file-label .form-file-text,
+form div .was-validated input[type=file][type=text]:invalid:focus-within ~ .form-file-label .form-file-text,
 .was-validated input[type=file].form-control:invalid:focus-within ~ .form-file-label .form-file-button,
-.was-validated input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-button, input[type=file].form-control.is-invalid:focus-within ~ .form-file-label .form-file-text, input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-file-text,
+.was-validated form div input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-button,
+form div .was-validated input[type=file][type=search]:invalid:focus-within ~ .form-file-label .form-file-button,
+.was-validated form div input[type=file][type=text]:invalid:focus-within ~ .form-file-label .form-file-button,
+form div .was-validated input[type=file][type=text]:invalid:focus-within ~ .form-file-label .form-file-button, input[type=file].form-control.is-invalid:focus-within ~ .form-file-label .form-file-text, form div input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-file-text,
+form div input[type=file].is-invalid[type=text]:focus-within ~ .form-file-label .form-file-text,
 input[type=file].form-control.is-invalid:focus-within ~ .form-file-label .form-file-button,
-input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-file-button {
+form div input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-file-button,
+form div input[type=file].is-invalid[type=text]:focus-within ~ .form-file-label .form-file-button {
   border-color: #dc4c64;
 }
 
-.was-validated .form-check-input:invalid, .form-check-input.is-invalid {
+.was-validated .form-check-input:invalid, .was-validated input[type=checkbox]:invalid, .was-validated form div input[type=radio]:invalid, form div .was-validated input[type=radio]:invalid, .form-check-input.is-invalid, input.is-invalid[type=checkbox], form div input.is-invalid[type=radio] {
   border-color: #dc4c64;
 }
-.was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked {
+.was-validated .form-check-input:invalid:checked, .was-validated input[type=checkbox]:invalid:checked, .was-validated form div input[type=radio]:invalid:checked, form div .was-validated input[type=radio]:invalid:checked, .form-check-input.is-invalid:checked, input.is-invalid[type=checkbox]:checked, form div input.is-invalid[type=radio]:checked {
   background-color: #dc4c64;
 }
-.was-validated .form-check-input:invalid:checked:focus:before, .form-check-input.is-invalid:checked:focus:before {
+.was-validated .form-check-input:invalid:checked:focus:before, .was-validated input[type=checkbox]:invalid:checked:focus:before, .was-validated form div input[type=radio]:invalid:checked:focus:before, form div .was-validated input[type=radio]:invalid:checked:focus:before, .form-check-input.is-invalid:checked:focus:before, input.is-invalid[type=checkbox]:checked:focus:before, form div input.is-invalid[type=radio]:checked:focus:before {
   box-shadow: 0px 0px 0px 13px #dc4c64;
 }
-.was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
+.was-validated .form-check-input:invalid:focus, .was-validated input[type=checkbox]:invalid:focus, .was-validated form div input[type=radio]:invalid:focus, form div .was-validated input[type=radio]:invalid:focus, .form-check-input.is-invalid:focus, input.is-invalid[type=checkbox]:focus, form div input.is-invalid[type=radio]:focus {
   box-shadow: none;
 }
-.was-validated .form-check-input:invalid:focus:before, .form-check-input.is-invalid:focus:before {
+.was-validated .form-check-input:invalid:focus:before, .was-validated input[type=checkbox]:invalid:focus:before, .was-validated form div input[type=radio]:invalid:focus:before, form div .was-validated input[type=radio]:invalid:focus:before, .form-check-input.is-invalid:focus:before, input.is-invalid[type=checkbox]:focus:before, form div input.is-invalid[type=radio]:focus:before {
   box-shadow: 0px 0px 0px 13px #dc4c64;
 }
-.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+.was-validated .form-check-input:invalid ~ .form-check-label, .was-validated input[type=checkbox]:invalid ~ .form-check-label, .was-validated form div input[type=radio]:invalid ~ .form-check-label, form div .was-validated input[type=radio]:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label, input.is-invalid[type=checkbox] ~ .form-check-label, form div input.is-invalid[type=radio] ~ .form-check-label {
   color: #dc4c64;
   margin-bottom: 1rem;
 }
-.was-validated .form-check-input:invalid[type=checkbox]:checked:focus, .form-check-input.is-invalid[type=checkbox]:checked:focus {
+.was-validated .form-check-input:invalid[type=checkbox]:checked:focus, .was-validated input:invalid[type=checkbox]:checked:focus, .form-check-input.is-invalid[type=checkbox]:checked:focus, input.is-invalid[type=checkbox]:checked:focus {
   background-color: #dc4c64;
   border-color: #dc4c64;
 }
-.was-validated .form-check-input:invalid[type=radio]:checked, .form-check-input.is-invalid[type=radio]:checked {
+.was-validated .form-check-input:invalid[type=radio]:checked, .was-validated input[type=checkbox]:invalid[type=radio]:checked, .was-validated form div input:invalid[type=radio]:checked, form div .was-validated input:invalid[type=radio]:checked, .form-check-input.is-invalid[type=radio]:checked, input.is-invalid[type=radio][type=checkbox]:checked, form div input.is-invalid[type=radio]:checked {
   border-color: #dc4c64;
   background-color: #fff;
 }
-.was-validated .form-check-input:invalid[type=radio]:checked:focus:before, .form-check-input.is-invalid[type=radio]:checked:focus:before {
+.was-validated .form-check-input:invalid[type=radio]:checked:focus:before, .was-validated input[type=checkbox]:invalid[type=radio]:checked:focus:before, .was-validated form div input:invalid[type=radio]:checked:focus:before, form div .was-validated input:invalid[type=radio]:checked:focus:before, .form-check-input.is-invalid[type=radio]:checked:focus:before, input.is-invalid[type=radio][type=checkbox]:checked:focus:before, form div input.is-invalid[type=radio]:checked:focus:before {
   box-shadow: 0px 0px 0px 13px #dc4c64;
 }
-.was-validated .form-check-input:invalid[type=radio]:checked:after, .form-check-input.is-invalid[type=radio]:checked:after {
+.was-validated .form-check-input:invalid[type=radio]:checked:after, .was-validated input[type=checkbox]:invalid[type=radio]:checked:after, .was-validated form div input:invalid[type=radio]:checked:after, form div .was-validated input:invalid[type=radio]:checked:after, .form-check-input.is-invalid[type=radio]:checked:after, input.is-invalid[type=radio][type=checkbox]:checked:after, form div input.is-invalid[type=radio]:checked:after {
   border-color: #dc4c64;
   background-color: #dc4c64;
 }
 
-.form-check-inline .form-check-input ~ .invalid-feedback {
+.form-check-inline .form-check-input ~ .invalid-feedback, .form-check-inline input[type=checkbox] ~ .invalid-feedback, .form-check-inline form div input[type=radio] ~ .invalid-feedback, form div .form-check-inline input[type=radio] ~ .invalid-feedback {
   margin-left: 0.5em;
 }
 
-.was-validated .form-switch .form-check-input:invalid:focus:before, .form-switch .form-check-input.is-invalid:focus:before {
+.was-validated .form-switch .form-check-input:invalid:focus:before, .was-validated .form-switch input[type=checkbox]:invalid:focus:before, .was-validated .form-switch form div input[type=radio]:invalid:focus:before, form div .was-validated .form-switch input[type=radio]:invalid:focus:before, .form-switch .form-check-input.is-invalid:focus:before, .form-switch input.is-invalid[type=checkbox]:focus:before, .form-switch form div input.is-invalid[type=radio]:focus:before, form div .form-switch input.is-invalid[type=radio]:focus:before {
   box-shadow: 3px -1px 0px 13px rgba(0, 0, 0, 0.6);
 }
-.was-validated .form-switch .form-check-input:invalid:checked[type=checkbox]:after, .form-switch .form-check-input.is-invalid:checked[type=checkbox]:after {
+.was-validated .form-switch .form-check-input:invalid:checked[type=checkbox]:after, .was-validated .form-switch input:invalid:checked[type=checkbox]:after, .form-switch .form-check-input.is-invalid:checked[type=checkbox]:after, .form-switch input.is-invalid:checked[type=checkbox]:after {
   background-color: #dc4c64;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-.was-validated .form-switch .form-check-input:invalid:checked:focus:before, .form-switch .form-check-input.is-invalid:checked:focus:before {
+.was-validated .form-switch .form-check-input:invalid:checked:focus:before, .was-validated .form-switch input[type=checkbox]:invalid:checked:focus:before, .was-validated .form-switch form div input[type=radio]:invalid:checked:focus:before, form div .was-validated .form-switch input[type=radio]:invalid:checked:focus:before, .form-switch .form-check-input.is-invalid:checked:focus:before, .form-switch input.is-invalid[type=checkbox]:checked:focus:before, .form-switch form div input.is-invalid[type=radio]:checked:focus:before, form div .form-switch input.is-invalid[type=radio]:checked:focus:before {
   box-shadow: 3px -1px 0px 13px #dc4c64;
 }
 
@@ -14146,7 +14608,7 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   border-top-color: var(--mdb-table-divider-color);
 }
 
-.btn, input[type=submit] {
+.btn, form div input[type=submit] {
   --mdb-btn-padding-top: 0.625rem;
   --mdb-btn-padding-bottom: 0.5rem;
   --mdb-btn-border-width: 0;
@@ -14164,19 +14626,19 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   border-radius: var(--mdb-btn-border-radius);
   box-shadow: var(--mdb-btn-box-shadow);
 }
-:not(.btn-check) + .btn:hover, .btn:first-child:hover, .btn:focus-visible, input[type=submit]:focus-visible, .btn:hover, input[type=submit]:hover {
+:not(.btn-check) + .btn:hover, .btn:first-child:hover, .btn:focus-visible, form div input[type=submit]:focus-visible, .btn:hover, form div input[type=submit]:hover {
   box-shadow: var(--mdb-btn-hover-box-shadow);
 }
-.btn-check:focus-visible + .btn, .btn-check:focus-visible + input[type=submit], .btn-check:focus + .btn, .btn-check:focus + input[type=submit], .btn:focus, input[type=submit]:focus {
+.btn-check:focus-visible + .btn, form div .btn-check:focus-visible + input[type=submit], .btn-check:focus + .btn, form div .btn-check:focus + input[type=submit], .btn:focus, form div input[type=submit]:focus {
   box-shadow: var(--mdb-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, .btn-check:checked + input[type=submit], .btn-check:active + .btn, .btn-check:active + input[type=submit], .btn:active, input[type=submit]:active, .btn.active, input.active[type=submit], .btn.show, input.show[type=submit] {
+.btn-check:checked + .btn, form div .btn-check:checked + input[type=submit], .btn-check:active + .btn, form div .btn-check:active + input[type=submit], .btn:active, form div input[type=submit]:active, .btn.active, form div input.active[type=submit], .btn.show, form div input.show[type=submit] {
   box-shadow: var(--mdb-btn-active-box-shadow);
 }
-.btn-check:checked + .btn:focus, .btn-check:checked + input[type=submit]:focus, .btn-check:active + .btn:focus, .btn-check:active + input[type=submit]:focus, .btn:active:focus, input[type=submit]:active:focus, .btn.active:focus, input.active[type=submit]:focus, .btn.show:focus, input.show[type=submit]:focus {
+.btn-check:checked + .btn:focus, form div .btn-check:checked + input[type=submit]:focus, .btn-check:active + .btn:focus, form div .btn-check:active + input[type=submit]:focus, .btn:active:focus, form div input[type=submit]:active:focus, .btn.active:focus, form div input.active[type=submit]:focus, .btn.show:focus, form div input.show[type=submit]:focus {
   box-shadow: var(--mdb-btn-focus-box-shadow);
 }
-.btn:disabled, input[type=submit]:disabled, .btn.disabled, input.disabled[type=submit], fieldset:disabled .btn, fieldset:disabled input[type=submit] {
+.btn:disabled, form div input[type=submit]:disabled, .btn.disabled, form div input.disabled[type=submit], fieldset:disabled .btn, fieldset:disabled form div input[type=submit], form div fieldset:disabled input[type=submit] {
   box-shadow: var(--mdb-btn-box-shadow);
 }
 
@@ -14206,14 +14668,14 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
 [class*=btn-outline-]:disabled, [class*=btn-outline-].disabled, fieldset:disabled [class*=btn-outline-] {
   box-shadow: none;
 }
-[class*=btn-outline-].btn-lg, .btn-group-lg > [class*=btn-outline-].btn, .btn-group-lg > input[class*=btn-outline-][type=submit] {
+[class*=btn-outline-].btn-lg, .btn-group-lg > [class*=btn-outline-].btn, form div .btn-group-lg > input[class*=btn-outline-][type=submit] {
   --mdb-btn-padding-top: 0.625rem;
   --mdb-btn-padding-bottom: 0.5625rem;
   --mdb-btn-padding-x: 1.5625rem;
   --mdb-btn-font-size: 0.875rem;
   --mdb-btn-line-height: 1.6;
 }
-[class*=btn-outline-].btn-sm, .btn-group-sm > [class*=btn-outline-].btn, .btn-group-sm > input[class*=btn-outline-][type=submit] {
+[class*=btn-outline-].btn-sm, .btn-group-sm > [class*=btn-outline-].btn, form div .btn-group-sm > input[class*=btn-outline-][type=submit] {
   --mdb-btn-padding-top: 0.25rem;
   --mdb-btn-padding-bottom: 0.1875rem;
   --mdb-btn-padding-x: 0.875rem;
@@ -14240,7 +14702,7 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   box-shadow: none;
 }
 
-.btn-primary, input[type=submit] {
+.btn-primary, form div input[type=submit] {
   --mdb-btn-bg: #3b71ca;
   --mdb-btn-color: #fff;
   --mdb-btn-box-shadow: 0 4px 9px -4px #3b71ca;
@@ -14251,23 +14713,23 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   --mdb-btn-active-bg: #3566b6;
   --mdb-btn-active-color: #fff;
 }
-:not(.btn-check) + .btn-primary:hover, .btn-primary:first-child:hover, .btn-primary:focus-visible, input[type=submit]:focus-visible, .btn-primary:hover, input[type=submit]:hover {
+:not(.btn-check) + .btn-primary:hover, .btn-primary:first-child:hover, .btn-primary:focus-visible, form div input[type=submit]:focus-visible, .btn-primary:hover, form div input[type=submit]:hover {
   box-shadow: 0 8px 9px -4px rgba(59, 113, 202, 0.3), 0 4px 18px 0 rgba(59, 113, 202, 0.2);
 }
-.btn-check:focus-visible + .btn-primary, .btn-check:focus-visible + input[type=submit], .btn-check:focus + .btn-primary, .btn-check:focus + input[type=submit], .btn-primary:focus, input[type=submit]:focus {
+.btn-check:focus-visible + .btn-primary, form div .btn-check:focus-visible + input[type=submit], .btn-check:focus + .btn-primary, form div .btn-check:focus + input[type=submit], .btn-primary:focus, form div input[type=submit]:focus {
   box-shadow: 0 8px 9px -4px rgba(59, 113, 202, 0.3), 0 4px 18px 0 rgba(59, 113, 202, 0.2);
   background-color: #386bc0;
 }
-.btn-check:checked + .btn-primary, .btn-check:checked + input[type=submit], .btn-check:active + .btn-primary, .btn-check:active + input[type=submit], .btn-primary:active, input[type=submit]:active, .btn-primary.active, input.active[type=submit], .btn-primary.show, input.show[type=submit] {
+.btn-check:checked + .btn-primary, form div .btn-check:checked + input[type=submit], .btn-check:active + .btn-primary, form div .btn-check:active + input[type=submit], .btn-primary:active, form div input[type=submit]:active, .btn-primary.active, form div input.active[type=submit], .btn-primary.show, form div input.show[type=submit] {
   box-shadow: 0 8px 9px -4px rgba(59, 113, 202, 0.3), 0 4px 18px 0 rgba(59, 113, 202, 0.2);
 }
-.btn-check:checked + .btn-primary:focus, .btn-check:checked + input[type=submit]:focus, .btn-check:active + .btn-primary:focus, .btn-check:active + input[type=submit]:focus, .btn-primary:active:focus, input[type=submit]:active:focus, .btn-primary.active:focus, input.active[type=submit]:focus, .btn-primary.show:focus, input.show[type=submit]:focus {
+.btn-check:checked + .btn-primary:focus, form div .btn-check:checked + input[type=submit]:focus, .btn-check:active + .btn-primary:focus, form div .btn-check:active + input[type=submit]:focus, .btn-primary:active:focus, form div input[type=submit]:active:focus, .btn-primary.active:focus, form div input.active[type=submit]:focus, .btn-primary.show:focus, form div input.show[type=submit]:focus {
   box-shadow: 0 8px 9px -4px rgba(59, 113, 202, 0.3), 0 4px 18px 0 rgba(59, 113, 202, 0.2);
 }
-.btn-check:checked + .btn-primary:hover, .btn-check:checked + input[type=submit]:hover, .btn-check:active + .btn-primary:hover, .btn-check:active + input[type=submit]:hover, .btn-primary:active:hover, input[type=submit]:active:hover, .btn-primary.active:hover, input.active[type=submit]:hover, .btn-primary.show:hover, input.show[type=submit]:hover {
+.btn-check:checked + .btn-primary:hover, form div .btn-check:checked + input[type=submit]:hover, .btn-check:active + .btn-primary:hover, form div .btn-check:active + input[type=submit]:hover, .btn-primary:active:hover, form div input[type=submit]:active:hover, .btn-primary.active:hover, form div input.active[type=submit]:hover, .btn-primary.show:hover, form div input.show[type=submit]:hover {
   background-color: #3566b6;
 }
-.btn-primary:disabled, input[type=submit]:disabled, .btn-primary.disabled, input.disabled[type=submit], fieldset:disabled .btn-primary, fieldset:disabled input[type=submit] {
+.btn-primary:disabled, form div input[type=submit]:disabled, .btn-primary.disabled, form div input.disabled[type=submit], fieldset:disabled .btn-primary, fieldset:disabled form div input[type=submit], form div fieldset:disabled input[type=submit] {
   box-shadow: 0 4px 9px -4px #3b71ca;
 }
 
@@ -14886,7 +15348,7 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   box-shadow: var(--mdb-btn-box-shadow);
 }
 
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > input[type=submit] {
+.btn-lg, .btn-group-lg > .btn, form div .btn-group-lg > input[type=submit] {
   --mdb-btn-padding-top: 0.75rem;
   --mdb-btn-padding-bottom: 0.6875rem;
   --mdb-btn-padding-x: 1.6875rem;
@@ -14894,7 +15356,7 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   --mdb-btn-line-height: 1.6;
 }
 
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > input[type=submit] {
+.btn-sm, .btn-group-sm > .btn, form div .btn-group-sm > input[type=submit] {
   --mdb-btn-padding-top: 0.375rem;
   --mdb-btn-padding-bottom: 0.3125rem;
   --mdb-btn-padding-x: 1rem;
@@ -14937,31 +15399,31 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   width: var(--mdb-btn-icon-width);
   line-height: var(--mdb-btn-icon-line-height);
 }
-.btn-floating.btn-lg, .btn-group-lg > .btn-floating.btn, .btn-group-lg > input.btn-floating[type=submit] {
+.btn-floating.btn-lg, .btn-group-lg > .btn-floating.btn, form div .btn-group-lg > input.btn-floating[type=submit] {
   width: var(--mdb-btn-width-lg);
   height: var(--mdb-btn-height-lg);
 }
-.btn-floating.btn-lg .fas, .btn-group-lg > .btn-floating.btn .fas, .btn-group-lg > input.btn-floating[type=submit] .fas,
+.btn-floating.btn-lg .fas, .btn-group-lg > .btn-floating.btn .fas, form div .btn-group-lg > input.btn-floating[type=submit] .fas,
 .btn-floating.btn-lg .far,
 .btn-group-lg > .btn-floating.btn .far,
-.btn-group-lg > input.btn-floating[type=submit] .far,
+form div .btn-group-lg > input.btn-floating[type=submit] .far,
 .btn-floating.btn-lg .fab,
 .btn-group-lg > .btn-floating.btn .fab,
-.btn-group-lg > input.btn-floating[type=submit] .fab {
+form div .btn-group-lg > input.btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-lg);
   line-height: var(--mdb-btn-icon-line-height-lg);
 }
-.btn-floating.btn-sm, .btn-group-sm > .btn-floating.btn, .btn-group-sm > input.btn-floating[type=submit] {
+.btn-floating.btn-sm, .btn-group-sm > .btn-floating.btn, form div .btn-group-sm > input.btn-floating[type=submit] {
   width: var(--mdb-btn-width-sm);
   height: var(--mdb-btn-height-sm);
 }
-.btn-floating.btn-sm .fas, .btn-group-sm > .btn-floating.btn .fas, .btn-group-sm > input.btn-floating[type=submit] .fas,
+.btn-floating.btn-sm .fas, .btn-group-sm > .btn-floating.btn .fas, form div .btn-group-sm > input.btn-floating[type=submit] .fas,
 .btn-floating.btn-sm .far,
 .btn-group-sm > .btn-floating.btn .far,
-.btn-group-sm > input.btn-floating[type=submit] .far,
+form div .btn-group-sm > input.btn-floating[type=submit] .far,
 .btn-floating.btn-sm .fab,
 .btn-group-sm > .btn-floating.btn .fab,
-.btn-group-sm > input.btn-floating[type=submit] .fab {
+form div .btn-group-sm > input.btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-sm);
   line-height: var(--mdb-btn-icon-line-height-sm);
 }
@@ -14980,23 +15442,23 @@ input[type=file].is-invalid[type=search]:focus-within ~ .form-file-label .form-f
   width: var(--mdb-btn-icon-width);
   line-height: var(--mdb-btn-icon-line-height);
 }
-[class*=btn-outline-].btn-floating.btn-lg .fas, .btn-group-lg > [class*=btn-outline-].btn-floating.btn .fas, .btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .fas,
+[class*=btn-outline-].btn-floating.btn-lg .fas, .btn-group-lg > [class*=btn-outline-].btn-floating.btn .fas, form div .btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .fas,
 [class*=btn-outline-].btn-floating.btn-lg .far,
 .btn-group-lg > [class*=btn-outline-].btn-floating.btn .far,
-.btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .far,
+form div .btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .far,
 [class*=btn-outline-].btn-floating.btn-lg .fab,
 .btn-group-lg > [class*=btn-outline-].btn-floating.btn .fab,
-.btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .fab {
+form div .btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-lg);
   line-height: var(--mdb-btn-icon-line-height-lg);
 }
-[class*=btn-outline-].btn-floating.btn-sm .fas, .btn-group-sm > [class*=btn-outline-].btn-floating.btn .fas, .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fas,
+[class*=btn-outline-].btn-floating.btn-sm .fas, .btn-group-sm > [class*=btn-outline-].btn-floating.btn .fas, form div .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fas,
 [class*=btn-outline-].btn-floating.btn-sm .far,
 .btn-group-sm > [class*=btn-outline-].btn-floating.btn .far,
-.btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .far,
+form div .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .far,
 [class*=btn-outline-].btn-floating.btn-sm .fab,
 .btn-group-sm > [class*=btn-outline-].btn-floating.btn .fab,
-.btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fab {
+form div .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-sm);
   line-height: var(--mdb-btn-icon-line-height-sm);
 }
@@ -15259,62 +15721,63 @@ fieldset:disabled .btn-group-vertical {
   box-shadow: var(--mdb-btn-box-shadow);
   border: 0;
 }
-.btn-group > .btn, .btn-group > input[type=submit],
+.btn-group > .btn, form div .btn-group > input[type=submit],
 .btn-group-vertical > .btn,
-.btn-group-vertical > input[type=submit] {
+form div .btn-group-vertical > input[type=submit] {
   box-shadow: none;
 }
-:not(.btn-check) + .btn-group > .btn:hover, .btn-group > .btn:first-child:hover, .btn-group > .btn:focus-visible, .btn-group > input[type=submit]:focus-visible, .btn-group > .btn:hover, .btn-group > input[type=submit]:hover,
+:not(.btn-check) + .btn-group > .btn:hover, .btn-group > .btn:first-child:hover, .btn-group > .btn:focus-visible, form div .btn-group > input[type=submit]:focus-visible, .btn-group > .btn:hover, form div .btn-group > input[type=submit]:hover,
 :not(.btn-check) + .btn-group-vertical > .btn:hover,
 .btn-group-vertical > .btn:first-child:hover,
 .btn-group-vertical > .btn:focus-visible,
-.btn-group-vertical > input[type=submit]:focus-visible,
+form div .btn-group-vertical > input[type=submit]:focus-visible,
 .btn-group-vertical > .btn:hover,
-.btn-group-vertical > input[type=submit]:hover {
+form div .btn-group-vertical > input[type=submit]:hover {
   box-shadow: none !important;
 }
-.btn-check:focus-visible + .btn-group > .btn, .btn-check:focus-visible + .btn-group > input[type=submit], .btn-check:focus + .btn-group > .btn, .btn-check:focus + .btn-group > input[type=submit], .btn-group > .btn:focus, .btn-group > input[type=submit]:focus,
+.btn-check:focus-visible + .btn-group > .btn, form div .btn-check:focus-visible + .btn-group > input[type=submit], .btn-check:focus + .btn-group > .btn, form div .btn-check:focus + .btn-group > input[type=submit], .btn-group > .btn:focus, form div .btn-group > input[type=submit]:focus,
 .btn-check:focus-visible + .btn-group-vertical > .btn,
-.btn-check:focus-visible + .btn-group-vertical > input[type=submit],
+form div .btn-check:focus-visible + .btn-group-vertical > input[type=submit],
 .btn-check:focus + .btn-group-vertical > .btn,
-.btn-check:focus + .btn-group-vertical > input[type=submit],
+form div .btn-check:focus + .btn-group-vertical > input[type=submit],
 .btn-group-vertical > .btn:focus,
-.btn-group-vertical > input[type=submit]:focus {
+form div .btn-group-vertical > input[type=submit]:focus {
   box-shadow: none;
 }
-.btn-check:checked + .btn-group > .btn, .btn-check:checked + .btn-group > input[type=submit], .btn-check:active + .btn-group > .btn, .btn-check:active + .btn-group > input[type=submit], .btn-group > .btn:active, .btn-group > input[type=submit]:active, .btn-group > .btn.active, .btn-group > input.active[type=submit], .btn-group > .btn.show, .btn-group > input.show[type=submit],
+.btn-check:checked + .btn-group > .btn, form div .btn-check:checked + .btn-group > input[type=submit], .btn-check:active + .btn-group > .btn, form div .btn-check:active + .btn-group > input[type=submit], .btn-group > .btn:active, form div .btn-group > input[type=submit]:active, .btn-group > .btn.active, form div .btn-group > input.active[type=submit], .btn-group > .btn.show, form div .btn-group > input.show[type=submit],
 .btn-check:checked + .btn-group-vertical > .btn,
-.btn-check:checked + .btn-group-vertical > input[type=submit],
+form div .btn-check:checked + .btn-group-vertical > input[type=submit],
 .btn-check:active + .btn-group-vertical > .btn,
-.btn-check:active + .btn-group-vertical > input[type=submit],
+form div .btn-check:active + .btn-group-vertical > input[type=submit],
 .btn-group-vertical > .btn:active,
-.btn-group-vertical > input[type=submit]:active,
+form div .btn-group-vertical > input[type=submit]:active,
 .btn-group-vertical > .btn.active,
-.btn-group-vertical > input.active[type=submit],
+form div .btn-group-vertical > input.active[type=submit],
 .btn-group-vertical > .btn.show,
-.btn-group-vertical > input.show[type=submit] {
+form div .btn-group-vertical > input.show[type=submit] {
   box-shadow: none;
 }
-.btn-check:checked + .btn-group > .btn:focus, .btn-check:checked + .btn-group > input[type=submit]:focus, .btn-check:active + .btn-group > .btn:focus, .btn-check:active + .btn-group > input[type=submit]:focus, .btn-group > .btn:active:focus, .btn-group > input[type=submit]:active:focus, .btn-group > .btn.active:focus, .btn-group > input.active[type=submit]:focus, .btn-group > .btn.show:focus, .btn-group > input.show[type=submit]:focus,
+.btn-check:checked + .btn-group > .btn:focus, form div .btn-check:checked + .btn-group > input[type=submit]:focus, .btn-check:active + .btn-group > .btn:focus, form div .btn-check:active + .btn-group > input[type=submit]:focus, .btn-group > .btn:active:focus, form div .btn-group > input[type=submit]:active:focus, .btn-group > .btn.active:focus, form div .btn-group > input.active[type=submit]:focus, .btn-group > .btn.show:focus, form div .btn-group > input.show[type=submit]:focus,
 .btn-check:checked + .btn-group-vertical > .btn:focus,
-.btn-check:checked + .btn-group-vertical > input[type=submit]:focus,
+form div .btn-check:checked + .btn-group-vertical > input[type=submit]:focus,
 .btn-check:active + .btn-group-vertical > .btn:focus,
-.btn-check:active + .btn-group-vertical > input[type=submit]:focus,
+form div .btn-check:active + .btn-group-vertical > input[type=submit]:focus,
 .btn-group-vertical > .btn:active:focus,
-.btn-group-vertical > input[type=submit]:active:focus,
+form div .btn-group-vertical > input[type=submit]:active:focus,
 .btn-group-vertical > .btn.active:focus,
-.btn-group-vertical > input.active[type=submit]:focus,
+form div .btn-group-vertical > input.active[type=submit]:focus,
 .btn-group-vertical > .btn.show:focus,
-.btn-group-vertical > input.show[type=submit]:focus {
+form div .btn-group-vertical > input.show[type=submit]:focus {
   box-shadow: none;
 }
-.btn-group > .btn:disabled, .btn-group > input[type=submit]:disabled, .btn-group > .btn.disabled, .btn-group > input.disabled[type=submit], fieldset:disabled .btn-group > .btn, fieldset:disabled .btn-group > input[type=submit],
+.btn-group > .btn:disabled, form div .btn-group > input[type=submit]:disabled, .btn-group > .btn.disabled, form div .btn-group > input.disabled[type=submit], fieldset:disabled .btn-group > .btn, fieldset:disabled form div .btn-group > input[type=submit], form div fieldset:disabled .btn-group > input[type=submit],
 .btn-group-vertical > .btn:disabled,
-.btn-group-vertical > input[type=submit]:disabled,
+form div .btn-group-vertical > input[type=submit]:disabled,
 .btn-group-vertical > .btn.disabled,
-.btn-group-vertical > input.disabled[type=submit],
+form div .btn-group-vertical > input.disabled[type=submit],
 fieldset:disabled .btn-group-vertical > .btn,
-fieldset:disabled .btn-group-vertical > input[type=submit] {
+fieldset:disabled form div .btn-group-vertical > input[type=submit],
+form div fieldset:disabled .btn-group-vertical > input[type=submit] {
   box-shadow: none;
 }
 .btn-group > .btn-group,
@@ -15338,9 +15801,9 @@ fieldset:disabled .btn-group-vertical > input[type=submit] {
 
 .btn-group,
 .btn-group-lg > .btn,
-.btn-group-lg > input[type=submit],
+form div .btn-group-lg > input[type=submit],
 .btn-group-sm > .btn,
-.btn-group-sm > input[type=submit] {
+form div .btn-group-sm > input[type=submit] {
   --mdb-btn-border-radius: 0.25rem;
   border-radius: var(--mdb-btn-border-radius);
 }
@@ -16130,7 +16593,7 @@ fieldset:disabled .btn-group-vertical > input[type=submit] {
   opacity: 0;
 }
 
-.btn .ripple-wave, input[type=submit] .ripple-wave {
+.btn .ripple-wave, form div input[type=submit] .ripple-wave {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
 }
 
@@ -16332,7 +16795,22 @@ a.anchor_super:after {
   margin-left: 0.5em;
 }
 
-pre strong.word0 {
+a:hover {
+  background-color: unset;
+}
+a.navbar-brand {
+  color: rgba(0, 0, 0, 0.9);
+}
+a.dropdown-item {
+  color: #4f4f4f;
+}
+
+hr.note_hr {
+  width: 100%;
+  text-align: unset;
+}
+
+strong.word0 {
   background-color: #ffeb3b;
 }
 
@@ -16343,10 +16821,15 @@ a.note_super {
   vertical-align: super;
 }
 
-input[type=search] {
+form div input[type=search],
+form div input[type=text] {
   background-color: #fff;
   width: unset;
   display: inline-block;
+  border: 1px solid #e0e0e0;
+}
+form div input[type=radio] {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
