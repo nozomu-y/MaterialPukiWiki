@@ -96,24 +96,26 @@ form {
   @extend form;
   input[type="search"],
   input[type="text"] {
-    @extend .form-outline, .form-control;
+    @extend .form-outline, .form-control, .form-control-sm;
     background-color: $white;
     width: unset;
     display: inline-block;
     border: 1px solid $gray-300;
+    margin: 3px 0;
   }
   input[type="radio"] {
     @extend .form-check-input;
     margin-right: 0;
   }
   input[type="submit"] {
-    @extend .btn, .btn-primary;
-    margin: 6px 0;
+    @extend .btn, .btn-primary, .btn-sm;
+    margin: 3px 0;
   }
 }
 
 input[type="checkbox"] {
   @extend .form-check-input;
+  vertical-align: baseline;
 }
 
 .ie5 {
@@ -130,9 +132,16 @@ table {
 textarea {
   @extend .form-outline, .form-control;
   background-color: $white;
+  border: 1px solid $gray-300;
+  margin: 3px 0;
 }
 
 select {
   @extend .form-outline, .form-control, .form-select;
   background-color: $white;
+  margin: 3px 0;
+}
+
+.link_page_passage {
+  @extend .text-break;
 }

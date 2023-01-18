@@ -2075,18 +2075,21 @@ form input[type=text]:hover:not(:disabled):not([readonly])::file-selector-button
 .form-control-plaintext:focus {
   outline: 0;
 }
-.form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
+.form-control-plaintext.form-control-sm, form input.form-control-plaintext[type=search],
+form input.form-control-plaintext[type=text], .form-control-plaintext.form-control-lg {
   padding-right: 0;
   padding-left: 0;
 }
 
-.form-control-sm {
+.form-control-sm, form input[type=search],
+form input[type=text] {
   min-height: calc(1.6em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.775rem;
   border-radius: 0.25rem;
 }
-.form-control-sm::file-selector-button {
+.form-control-sm::file-selector-button, form input[type=search]::file-selector-button,
+form input[type=text]::file-selector-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
   margin-inline-end: 0.5rem;
@@ -2129,7 +2132,8 @@ textarea.form-control-lg {
 .form-control-color::-webkit-color-swatch {
   border-radius: 0.25rem;
 }
-.form-control-color.form-control-sm {
+.form-control-color.form-control-sm, form input.form-control-color[type=search],
+form input.form-control-color[type=text] {
   height: calc(1.6em + 0.5rem + 2px);
 }
 .form-control-color.form-control-lg {
@@ -3169,7 +3173,7 @@ form .input-group > input[type=text]:not(:focus).is-invalid,
   --mdb-btn-border-radius: 0.5rem;
 }
 
-.btn-sm, .btn-group-sm > .btn, form .btn-group-sm > input[type=submit] {
+.btn-sm, form input[type=submit], .btn-group-sm > .btn, form .btn-group-sm > input[type=submit] {
   --mdb-btn-padding-y: 0.25rem;
   --mdb-btn-padding-x: 1rem;
   --mdb-btn-font-size: 0.75rem;
@@ -3611,7 +3615,7 @@ form .btn-group > .btn-group:not(:first-child) > input[type=submit] {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, form .btn-group-sm > input[type=submit] + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, form input[type=submit] + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -8486,7 +8490,7 @@ form .btn-group-vertical > .btn-group:not(:first-child) > input[type=submit] {
 }
 
 /*!rtl:begin:remove*/
-.text-break {
+.text-break, .link_page_passage {
   word-wrap: break-word !important;
   word-break: break-word !important;
 }
@@ -13158,8 +13162,8 @@ form input[type=text]:focus {
   border-color: #3b71ca;
   box-shadow: inset 0px 0px 0px 1px #3b71ca;
 }
-.form-control.form-control-sm, select.form-control-sm, textarea.form-control-sm, form input.form-control-sm[type=search],
-form input.form-control-sm[type=text] {
+.form-control.form-control-sm, select.form-control-sm, textarea.form-control-sm, form input[type=search],
+form input[type=text] {
   font-size: 0.775rem;
   line-height: 1.5;
 }
@@ -13676,65 +13680,65 @@ form input[type=text] input.form-control-lg.active[type=search] ~ .form-label,
 form input[type=text] input.form-control-lg.active[type=text] ~ .form-label {
   transform: translateY(-1.25rem) translateY(0.1rem) scale(0.8);
 }
-.form-outline .form-control.form-control-sm, .form-outline select.form-control-sm, select .form-control.form-control-sm, select select.form-control-sm, .form-outline textarea.form-control-sm, select textarea.form-control-sm, textarea .form-control.form-control-sm, textarea select.form-control-sm, textarea textarea.form-control-sm, .form-outline form input.form-control-sm[type=search], select form input.form-control-sm[type=search], textarea form input.form-control-sm[type=search], form .form-outline input.form-control-sm[type=search], form select input.form-control-sm[type=search], form textarea input.form-control-sm[type=search],
-.form-outline form input.form-control-sm[type=text],
-select form input.form-control-sm[type=text],
-textarea form input.form-control-sm[type=text],
-form .form-outline input.form-control-sm[type=text],
-form select input.form-control-sm[type=text],
-form textarea input.form-control-sm[type=text], form input[type=search] .form-control.form-control-sm, form input[type=search] select.form-control-sm, form input[type=search] textarea.form-control-sm, form input[type=search] input.form-control-sm[type=search],
-form input[type=search] input.form-control-sm[type=text],
+.form-outline .form-control.form-control-sm, .form-outline select.form-control-sm, select .form-control.form-control-sm, select select.form-control-sm, .form-outline textarea.form-control-sm, select textarea.form-control-sm, textarea .form-control.form-control-sm, textarea select.form-control-sm, textarea textarea.form-control-sm, .form-outline form input[type=search], select form input[type=search], textarea form input[type=search], form .form-outline input[type=search], form select input[type=search], form textarea input[type=search],
+.form-outline form input[type=text],
+select form input[type=text],
+textarea form input[type=text],
+form .form-outline input[type=text],
+form select input[type=text],
+form textarea input[type=text], form input[type=search] .form-control.form-control-sm, form input[type=search] select.form-control-sm, form input[type=search] textarea.form-control-sm, form input[type=search] input[type=search],
+form input[type=search] input[type=text],
 form input[type=text] .form-control.form-control-sm,
 form input[type=text] select.form-control-sm,
 form input[type=text] textarea.form-control-sm,
-form input[type=text] input.form-control-sm[type=search],
-form input[type=text] input.form-control-sm[type=text] {
+form input[type=text] input[type=search],
+form input[type=text] input[type=text] {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   font-size: 0.775rem;
   line-height: 1.5;
 }
-.form-outline .form-control.form-control-sm ~ .form-label, .form-outline select.form-control-sm ~ .form-label, select .form-control.form-control-sm ~ .form-label, select select.form-control-sm ~ .form-label, .form-outline textarea.form-control-sm ~ .form-label, select textarea.form-control-sm ~ .form-label, textarea .form-control.form-control-sm ~ .form-label, textarea select.form-control-sm ~ .form-label, textarea textarea.form-control-sm ~ .form-label, .form-outline form input.form-control-sm[type=search] ~ .form-label, select form input.form-control-sm[type=search] ~ .form-label, textarea form input.form-control-sm[type=search] ~ .form-label, form .form-outline input.form-control-sm[type=search] ~ .form-label, form select input.form-control-sm[type=search] ~ .form-label, form textarea input.form-control-sm[type=search] ~ .form-label,
-.form-outline form input.form-control-sm[type=text] ~ .form-label,
-select form input.form-control-sm[type=text] ~ .form-label,
-textarea form input.form-control-sm[type=text] ~ .form-label,
-form .form-outline input.form-control-sm[type=text] ~ .form-label,
-form select input.form-control-sm[type=text] ~ .form-label,
-form textarea input.form-control-sm[type=text] ~ .form-label, form input[type=search] .form-control.form-control-sm ~ .form-label, form input[type=search] select.form-control-sm ~ .form-label, form input[type=search] textarea.form-control-sm ~ .form-label, form input[type=search] input.form-control-sm[type=search] ~ .form-label,
-form input[type=search] input.form-control-sm[type=text] ~ .form-label,
+.form-outline .form-control.form-control-sm ~ .form-label, .form-outline select.form-control-sm ~ .form-label, select .form-control.form-control-sm ~ .form-label, select select.form-control-sm ~ .form-label, .form-outline textarea.form-control-sm ~ .form-label, select textarea.form-control-sm ~ .form-label, textarea .form-control.form-control-sm ~ .form-label, textarea select.form-control-sm ~ .form-label, textarea textarea.form-control-sm ~ .form-label, .form-outline form input[type=search] ~ .form-label, select form input[type=search] ~ .form-label, textarea form input[type=search] ~ .form-label, form .form-outline input[type=search] ~ .form-label, form select input[type=search] ~ .form-label, form textarea input[type=search] ~ .form-label,
+.form-outline form input[type=text] ~ .form-label,
+select form input[type=text] ~ .form-label,
+textarea form input[type=text] ~ .form-label,
+form .form-outline input[type=text] ~ .form-label,
+form select input[type=text] ~ .form-label,
+form textarea input[type=text] ~ .form-label, form input[type=search] .form-control.form-control-sm ~ .form-label, form input[type=search] select.form-control-sm ~ .form-label, form input[type=search] textarea.form-control-sm ~ .form-label, form input[type=search] input[type=search] ~ .form-label,
+form input[type=search] input[type=text] ~ .form-label,
 form input[type=text] .form-control.form-control-sm ~ .form-label,
 form input[type=text] select.form-control-sm ~ .form-label,
 form input[type=text] textarea.form-control-sm ~ .form-label,
-form input[type=text] input.form-control-sm[type=search] ~ .form-label,
-form input[type=text] input.form-control-sm[type=text] ~ .form-label {
+form input[type=text] input[type=search] ~ .form-label,
+form input[type=text] input[type=text] ~ .form-label {
   padding-top: 0.33rem;
   font-size: 0.775rem;
 }
-.form-outline .form-control.form-control-sm:focus ~ .form-label, .form-outline select.form-control-sm:focus ~ .form-label, select .form-control.form-control-sm:focus ~ .form-label, select select.form-control-sm:focus ~ .form-label, .form-outline textarea.form-control-sm:focus ~ .form-label, select textarea.form-control-sm:focus ~ .form-label, textarea .form-control.form-control-sm:focus ~ .form-label, textarea select.form-control-sm:focus ~ .form-label, textarea textarea.form-control-sm:focus ~ .form-label, .form-outline form input.form-control-sm[type=search]:focus ~ .form-label, select form input.form-control-sm[type=search]:focus ~ .form-label, textarea form input.form-control-sm[type=search]:focus ~ .form-label, form .form-outline input.form-control-sm[type=search]:focus ~ .form-label, form select input.form-control-sm[type=search]:focus ~ .form-label, form textarea input.form-control-sm[type=search]:focus ~ .form-label,
-.form-outline form input.form-control-sm[type=text]:focus ~ .form-label,
-select form input.form-control-sm[type=text]:focus ~ .form-label,
-textarea form input.form-control-sm[type=text]:focus ~ .form-label,
-form .form-outline input.form-control-sm[type=text]:focus ~ .form-label,
-form select input.form-control-sm[type=text]:focus ~ .form-label,
-form textarea input.form-control-sm[type=text]:focus ~ .form-label, form input[type=search] .form-control.form-control-sm:focus ~ .form-label, form input[type=search] select.form-control-sm:focus ~ .form-label, form input[type=search] textarea.form-control-sm:focus ~ .form-label, form input[type=search] input.form-control-sm[type=search]:focus ~ .form-label,
-form input[type=search] input.form-control-sm[type=text]:focus ~ .form-label,
+.form-outline .form-control.form-control-sm:focus ~ .form-label, .form-outline select.form-control-sm:focus ~ .form-label, select .form-control.form-control-sm:focus ~ .form-label, select select.form-control-sm:focus ~ .form-label, .form-outline textarea.form-control-sm:focus ~ .form-label, select textarea.form-control-sm:focus ~ .form-label, textarea .form-control.form-control-sm:focus ~ .form-label, textarea select.form-control-sm:focus ~ .form-label, textarea textarea.form-control-sm:focus ~ .form-label, .form-outline form input[type=search]:focus ~ .form-label, select form input[type=search]:focus ~ .form-label, textarea form input[type=search]:focus ~ .form-label, form .form-outline input[type=search]:focus ~ .form-label, form select input[type=search]:focus ~ .form-label, form textarea input[type=search]:focus ~ .form-label,
+.form-outline form input[type=text]:focus ~ .form-label,
+select form input[type=text]:focus ~ .form-label,
+textarea form input[type=text]:focus ~ .form-label,
+form .form-outline input[type=text]:focus ~ .form-label,
+form select input[type=text]:focus ~ .form-label,
+form textarea input[type=text]:focus ~ .form-label, form input[type=search] .form-control.form-control-sm:focus ~ .form-label, form input[type=search] select.form-control-sm:focus ~ .form-label, form input[type=search] textarea.form-control-sm:focus ~ .form-label, form input[type=search] input[type=search]:focus ~ .form-label,
+form input[type=search] input[type=text]:focus ~ .form-label,
 form input[type=text] .form-control.form-control-sm:focus ~ .form-label,
 form input[type=text] select.form-control-sm:focus ~ .form-label,
 form input[type=text] textarea.form-control-sm:focus ~ .form-label,
-form input[type=text] input.form-control-sm[type=search]:focus ~ .form-label,
-form input[type=text] input.form-control-sm[type=text]:focus ~ .form-label, .form-outline .form-control.form-control-sm.active ~ .form-label, .form-outline select.form-control-sm.active ~ .form-label, select .form-control.form-control-sm.active ~ .form-label, select select.form-control-sm.active ~ .form-label, .form-outline textarea.form-control-sm.active ~ .form-label, select textarea.form-control-sm.active ~ .form-label, textarea .form-control.form-control-sm.active ~ .form-label, textarea select.form-control-sm.active ~ .form-label, textarea textarea.form-control-sm.active ~ .form-label, .form-outline form input.form-control-sm.active[type=search] ~ .form-label, select form input.form-control-sm.active[type=search] ~ .form-label, textarea form input.form-control-sm.active[type=search] ~ .form-label, form .form-outline input.form-control-sm.active[type=search] ~ .form-label, form select input.form-control-sm.active[type=search] ~ .form-label, form textarea input.form-control-sm.active[type=search] ~ .form-label,
-.form-outline form input.form-control-sm.active[type=text] ~ .form-label,
-select form input.form-control-sm.active[type=text] ~ .form-label,
-textarea form input.form-control-sm.active[type=text] ~ .form-label,
-form .form-outline input.form-control-sm.active[type=text] ~ .form-label,
-form select input.form-control-sm.active[type=text] ~ .form-label,
-form textarea input.form-control-sm.active[type=text] ~ .form-label, form input[type=search] .form-control.form-control-sm.active ~ .form-label, form input[type=search] select.form-control-sm.active ~ .form-label, form input[type=search] textarea.form-control-sm.active ~ .form-label, form input[type=search] input.form-control-sm.active[type=search] ~ .form-label,
-form input[type=search] input.form-control-sm.active[type=text] ~ .form-label,
+form input[type=text] input[type=search]:focus ~ .form-label,
+form input[type=text] input[type=text]:focus ~ .form-label, .form-outline .form-control.form-control-sm.active ~ .form-label, .form-outline select.form-control-sm.active ~ .form-label, select .form-control.form-control-sm.active ~ .form-label, select select.form-control-sm.active ~ .form-label, .form-outline textarea.form-control-sm.active ~ .form-label, select textarea.form-control-sm.active ~ .form-label, textarea .form-control.form-control-sm.active ~ .form-label, textarea select.form-control-sm.active ~ .form-label, textarea textarea.form-control-sm.active ~ .form-label, .form-outline form input.active[type=search] ~ .form-label, select form input.active[type=search] ~ .form-label, textarea form input.active[type=search] ~ .form-label, form .form-outline input.active[type=search] ~ .form-label, form select input.active[type=search] ~ .form-label, form textarea input.active[type=search] ~ .form-label,
+.form-outline form input.active[type=text] ~ .form-label,
+select form input.active[type=text] ~ .form-label,
+textarea form input.active[type=text] ~ .form-label,
+form .form-outline input.active[type=text] ~ .form-label,
+form select input.active[type=text] ~ .form-label,
+form textarea input.active[type=text] ~ .form-label, form input[type=search] .form-control.form-control-sm.active ~ .form-label, form input[type=search] select.form-control-sm.active ~ .form-label, form input[type=search] textarea.form-control-sm.active ~ .form-label, form input[type=search] input.active[type=search] ~ .form-label,
+form input[type=search] input.active[type=text] ~ .form-label,
 form input[type=text] .form-control.form-control-sm.active ~ .form-label,
 form input[type=text] select.form-control-sm.active ~ .form-label,
 form input[type=text] textarea.form-control-sm.active ~ .form-label,
-form input[type=text] input.form-control-sm.active[type=search] ~ .form-label,
-form input[type=text] input.form-control-sm.active[type=text] ~ .form-label {
+form input[type=text] input.active[type=search] ~ .form-label,
+form input[type=text] input.active[type=text] ~ .form-label {
   transform: translateY(-0.85rem) translateY(0.1rem) scale(0.8);
 }
 .form-outline.form-white .form-control, .form-outline.form-white select, select.form-white .form-control, select.form-white select, .form-outline.form-white textarea, select.form-white textarea, textarea.form-white .form-control, textarea.form-white select, textarea.form-white textarea, .form-outline.form-white form input[type=search], select.form-white form input[type=search], textarea.form-white form input[type=search], form .form-outline.form-white input[type=search], form select.form-white input[type=search], form textarea.form-white input[type=search],
@@ -15763,7 +15767,7 @@ form input[type=file].is-invalid[type=text]:focus-within ~ .form-file-label .for
   --mdb-btn-font-size: 0.875rem;
   --mdb-btn-line-height: 1.6;
 }
-[class*=btn-outline-].btn-sm, .btn-group-sm > [class*=btn-outline-].btn, form .btn-group-sm > input[class*=btn-outline-][type=submit] {
+[class*=btn-outline-].btn-sm, form input[class*=btn-outline-][type=submit], .btn-group-sm > [class*=btn-outline-].btn {
   --mdb-btn-padding-top: 0.25rem;
   --mdb-btn-padding-bottom: 0.1875rem;
   --mdb-btn-padding-x: 0.875rem;
@@ -16444,7 +16448,7 @@ form input[type=file].is-invalid[type=text]:focus-within ~ .form-file-label .for
   --mdb-btn-line-height: 1.6;
 }
 
-.btn-sm, .btn-group-sm > .btn, form .btn-group-sm > input[type=submit] {
+.btn-sm, form input[type=submit], .btn-group-sm > .btn, form .btn-group-sm > input[type=submit] {
   --mdb-btn-padding-top: 0.375rem;
   --mdb-btn-padding-bottom: 0.3125rem;
   --mdb-btn-padding-x: 1rem;
@@ -16501,17 +16505,17 @@ form .btn-group-lg > input.btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-lg);
   line-height: var(--mdb-btn-icon-line-height-lg);
 }
-.btn-floating.btn-sm, .btn-group-sm > .btn-floating.btn, form .btn-group-sm > input.btn-floating[type=submit] {
+.btn-floating.btn-sm, form input.btn-floating[type=submit], .btn-group-sm > .btn-floating.btn {
   width: var(--mdb-btn-width-sm);
   height: var(--mdb-btn-height-sm);
 }
-.btn-floating.btn-sm .fas, .btn-group-sm > .btn-floating.btn .fas, form .btn-group-sm > input.btn-floating[type=submit] .fas,
+.btn-floating.btn-sm .fas, form input.btn-floating[type=submit] .fas, .btn-group-sm > .btn-floating.btn .fas,
 .btn-floating.btn-sm .far,
+form input.btn-floating[type=submit] .far,
 .btn-group-sm > .btn-floating.btn .far,
-form .btn-group-sm > input.btn-floating[type=submit] .far,
 .btn-floating.btn-sm .fab,
-.btn-group-sm > .btn-floating.btn .fab,
-form .btn-group-sm > input.btn-floating[type=submit] .fab {
+form input.btn-floating[type=submit] .fab,
+.btn-group-sm > .btn-floating.btn .fab {
   width: var(--mdb-btn-icon-width-sm);
   line-height: var(--mdb-btn-icon-line-height-sm);
 }
@@ -16540,13 +16544,13 @@ form .btn-group-lg > input[class*=btn-outline-].btn-floating[type=submit] .fab {
   width: var(--mdb-btn-icon-width-lg);
   line-height: var(--mdb-btn-icon-line-height-lg);
 }
-[class*=btn-outline-].btn-floating.btn-sm .fas, .btn-group-sm > [class*=btn-outline-].btn-floating.btn .fas, form .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fas,
+[class*=btn-outline-].btn-floating.btn-sm .fas, form input[class*=btn-outline-].btn-floating[type=submit] .fas, .btn-group-sm > [class*=btn-outline-].btn-floating.btn .fas,
 [class*=btn-outline-].btn-floating.btn-sm .far,
+form input[class*=btn-outline-].btn-floating[type=submit] .far,
 .btn-group-sm > [class*=btn-outline-].btn-floating.btn .far,
-form .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .far,
 [class*=btn-outline-].btn-floating.btn-sm .fab,
-.btn-group-sm > [class*=btn-outline-].btn-floating.btn .fab,
-form .btn-group-sm > input[class*=btn-outline-].btn-floating[type=submit] .fab {
+form input[class*=btn-outline-].btn-floating[type=submit] .fab,
+.btn-group-sm > [class*=btn-outline-].btn-floating.btn .fab {
   width: var(--mdb-btn-icon-width-sm);
   line-height: var(--mdb-btn-icon-line-height-sm);
 }
@@ -17915,12 +17919,17 @@ form input[type=text] {
   width: unset;
   display: inline-block;
   border: 1px solid #e0e0e0;
+  margin: 3px 0;
 }
 form input[type=radio] {
   margin-right: 0;
 }
 form input[type=submit] {
-  margin: 6px 0;
+  margin: 3px 0;
+}
+
+input[type=checkbox] {
+  vertical-align: baseline;
 }
 
 table.style_table {
@@ -17930,10 +17939,13 @@ table.style_table {
 
 textarea {
   background-color: #fff;
+  border: 1px solid #e0e0e0;
+  margin: 3px 0;
 }
 
 select {
   background-color: #fff;
+  margin: 3px 0;
 }
 
 /*# sourceMappingURL=style.css.map */
