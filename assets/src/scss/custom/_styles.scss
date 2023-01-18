@@ -124,7 +124,7 @@ input[type="checkbox"] {
 table {
   &.style_table {
     all: unset;
-    @extend .table, .table-striped;
+    @extend .table, .table-striped, .table-sm;
     border-color: $gray-400;
   }
 }
