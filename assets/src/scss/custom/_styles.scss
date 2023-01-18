@@ -94,26 +94,45 @@ a {
 
 form {
   @extend form;
-  div {
-    @extend .form-outline;
-    input[type="search"],
-    input[type="text"] {
-      @extend .form-outline, .form-control;
-      background-color: $white;
-      width: unset;
-      display: inline-block;
-      border: 1px solid $gray-300;
-    }
-    input[type="radio"] {
-      @extend .form-check-input;
-      margin-right: 0;
-    }
-    input[type="submit"] {
-      @extend .btn, .btn-primary;
-    }
+  input[type="search"],
+  input[type="text"] {
+    @extend .form-outline, .form-control;
+    background-color: $white;
+    width: unset;
+    display: inline-block;
+    border: 1px solid $gray-300;
+  }
+  input[type="radio"] {
+    @extend .form-check-input;
+    margin-right: 0;
+  }
+  input[type="submit"] {
+    @extend .btn, .btn-primary;
+    margin: 6px 0;
   }
 }
 
 input[type="checkbox"] {
   @extend .form-check-input;
+}
+
+.ie5 {
+  @extend .table-responsive;
+}
+table {
+  &.style_table {
+    all: unset;
+    @extend .table, .table-striped;
+    border-color: $gray-400;
+  }
+}
+
+textarea {
+  @extend .form-outline, .form-control;
+  background-color: $white;
+}
+
+select {
+  @extend .form-outline, .form-control, .form-select;
+  background-color: $white;
 }
