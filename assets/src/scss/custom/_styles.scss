@@ -75,6 +75,8 @@ hr {
 
 pre {
   @extend .alert, .alert-secondary;
+  padding: 1rem;
+  margin: 0.5rem 0;
 }
 
 strong {

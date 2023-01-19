@@ -17902,6 +17902,11 @@ hr.note_hr {
   text-align: unset;
 }
 
+pre {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
 strong.word0 {
   background-color: #ffeb3b;
 }
