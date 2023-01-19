@@ -2182,7 +2182,7 @@ form input.form-control-color[type=text] {
   text-shadow: 0 0 0 #4f4f4f;
 }
 
-.form-select-sm {
+.form-select-sm, select {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
@@ -17908,7 +17908,34 @@ pre {
 }
 
 strong.word0 {
-  background-color: #ffeb3b;
+  background-color: #fff59d;
+}
+strong.word1 {
+  background-color: #81d4fa;
+}
+strong.word2 {
+  background-color: #c5e1a5;
+}
+strong.word3 {
+  background-color: #ffcc80;
+}
+strong.word4 {
+  background-color: #f48fb1;
+}
+strong.word5 {
+  background-color: #fbc02d;
+}
+strong.word6 {
+  background-color: #0288d1;
+}
+strong.word7 {
+  background-color: #689f38;
+}
+strong.word8 {
+  background-color: #f57c00;
+}
+strong.word9 {
+  background-color: #c2185b;
 }
 
 a.note_super {
@@ -17951,6 +17978,7 @@ textarea {
 select {
   background-color: #fff;
   margin: 3px 0;
+  border: 1px solid #e0e0e0;
 }
 
 span.diff_removed {

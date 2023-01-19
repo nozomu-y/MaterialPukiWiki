@@ -81,7 +81,34 @@ pre {
 
 strong {
   &.word0 {
-    background-color: $yellow;
+    background-color: $yellow-200;
+  }
+  &.word1 {
+    background-color: $light-blue-200;
+  }
+  &.word2 {
+    background-color: $light-green-200;
+  }
+  &.word3 {
+    background-color: $orange-200;
+  }
+  &.word4 {
+    background-color: $pink-200;
+  }
+  &.word5 {
+    background-color: $yellow-700;
+  }
+  &.word6 {
+    background-color: $light-blue-700;
+  }
+  &.word7 {
+    background-color: $light-green-700;
+  }
+  &.word8 {
+    background-color: $orange-700;
+  }
+  &.word9 {
+    background-color: $pink-700;
   }
 }
 
@@ -139,9 +166,10 @@ textarea {
 }
 
 select {
-  @extend .form-outline, .form-control, .form-select;
+  @extend .form-outline, .form-control, .form-select, .form-select-sm;
   background-color: $white;
   margin: 3px 0;
+  border: 1px solid $gray-300;
 }
 
 .link_page_passage {
