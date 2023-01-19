@@ -247,6 +247,14 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
         </div>
     </div>
 
+    <button
+        type="button"
+        class="btn btn-primary btn-floating"
+        id="btn-back-to-top"
+    >
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <footer class="bg-secondary bg-opacity-10 py-3 mt-3">
         <div class="text-center">
             <?php if ($is_page) { ?>
@@ -366,6 +374,7 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
     </footer>
 
     <script type="text/javascript" src="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/js/mdb.min.js"></script>
+    <script type="text/javascript" src="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/js/custom.js"></script>
 </body>
 
 </html>
