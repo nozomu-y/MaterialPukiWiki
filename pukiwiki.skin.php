@@ -170,6 +170,10 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
                         <i class="fa-solid fa-bars fa-lg"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <?php
+                        _navigator('top', 'fa-solid fa-house');
+                    ?>
+                    <li><hr class="dropdown-divider" /></li>
                     <?php 
                     if ($is_page) {
                         if ($rw) {
