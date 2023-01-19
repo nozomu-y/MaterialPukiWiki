@@ -43,6 +43,7 @@ $lang  = &$_LANG['skin'];
 $link  = &$_LINK;
 $image = &$_IMAGE['skin'];
 $rw    = !PKWK_READONLY;
+$cache_version = '2023-01-19';
 
 // MenuBar
 $menu = arg_check('read') && exist_plugin_convert('menu') ? do_plugin_convert('menu') : FALSE;
@@ -75,9 +76,9 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
     <title><?php echo $title ?> - <?php echo $page_title ?></title>
 
     <link rel="SHORTCUT ICON" href="<?php echo $image['favicon'] ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>pukiwiki.css?ver=<?php echo $cache_version ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/reset.css?ver=<?php echo $cache_version ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo SKIN_DIR ?>MaterialPukiWiki/assets/css/style.css?ver=<?php echo $cache_version ?>" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
