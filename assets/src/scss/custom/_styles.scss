@@ -145,3 +145,25 @@ select {
 .link_page_passage {
   @extend .text-break;
 }
+
+span {
+  &.diff_removed {
+    color: $danger;
+    background-color: rgba($danger, 0.1);
+  }
+  &.diff_added {
+    color: $success;
+    background-color: rgba($success, 0.1);
+  }
+}
+
+pre {
+  span {
+    &.diff_removed:before {
+      content: "- ";
+    }
+    &.diff_added:before {
+      content: "+ ";
+    }
+  }
+}

@@ -17948,4 +17948,20 @@ select {
   margin: 3px 0;
 }
 
+span.diff_removed {
+  color: #dc4c64;
+  background-color: rgba(220, 76, 100, 0.1);
+}
+span.diff_added {
+  color: #14a44d;
+  background-color: rgba(20, 164, 77, 0.1);
+}
+
+pre span.diff_removed:before {
+  content: "- ";
+}
+pre span.diff_added:before {
+  content: "+ ";
+}
+
 /*# sourceMappingURL=style.css.map */
