@@ -254,10 +254,12 @@ header('Content-Type: text/html; charset=' . CONTENT_CHARSET);
             <span>Last-modified: <?php echo $lastmodified ?></span>
             <br>
             <?php } ?>
+            <!--
             <?php if ($related != '') { ?>
             <span>Link: <?php echo $related ?></span>
             <br>
             <?php } ?>
+            -->
             <span>Site admin: <a href="<?php echo $modifierlink ?>"><?php echo $modifier ?></a></span>
             <br>
             <!-- Copyright -->
