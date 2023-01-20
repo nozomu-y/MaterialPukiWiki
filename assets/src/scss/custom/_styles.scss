@@ -124,7 +124,8 @@ a {
 form {
   @extend form;
   input[type="search"],
-  input[type="text"] {
+  input[type="text"],
+  input[type="password"] {
     @extend .form-outline, .form-control, .form-control-sm;
     background-color: $white;
     width: unset;
