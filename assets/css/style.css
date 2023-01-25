@@ -232,7 +232,7 @@ sup {
   top: -0.5em;
 }
 
-a, a:visited {
+a, a:visited, a:link {
   color: var(--mdb-link-color);
   text-decoration: none;
 }
@@ -272,7 +272,7 @@ code {
   color: var(--mdb-code-color);
   word-wrap: break-word;
 }
-a > code, a:visited > code {
+a > code, a:visited > code, a:link > code {
   color: inherit;
 }
 
@@ -12220,7 +12220,7 @@ hr.vr {
   opacity: var(--mdb-divider-blurry-opacity);
 }
 
-a, a:visited {
+a, a:visited, a:link {
   text-decoration: none;
 }
 

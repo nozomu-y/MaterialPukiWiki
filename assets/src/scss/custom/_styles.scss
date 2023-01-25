@@ -51,6 +51,9 @@ a {
 }
 
 a {
+  &:link{
+    @extend a;
+  }
   &:visited {
     @extend a;
   }
